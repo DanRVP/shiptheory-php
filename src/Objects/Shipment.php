@@ -2,8 +2,13 @@
 
 namespace Shiptheory\Objects;
 
-class Shipment 
+use Shiptheory\Util\ObjectTrait;
+use Shiptheotry\Util\ObjectInterface;
+
+class Shipment implements ObjectInterface
 {
+    use ObjectTrait;
+
     /**
      * @var string
      */
@@ -30,6 +35,26 @@ class Shipment
     protected $shipment_detail;
 
     /**
+     * @var Recipient
+     */
+    protected $recipient;
+
+    /**
+     * @var Sender
+     */
+    protected $sender;
+
+    /**
+     * @var Product[]
+     */
+    protected $products;
+
+    /**
+     * @var Package[]
+     */
+    protected $packages;
+
+    /**
      * Get the value of reference2
      *
      * @return  string
@@ -43,8 +68,6 @@ class Shipment
      * Set the value of reference2
      *
      * @param  string  $reference2
-     *
-     * @return  self
      */ 
     public function setReference2(string $reference2)
     {
@@ -65,8 +88,6 @@ class Shipment
      * Set the value of reference
      *
      * @param  string  $reference
-     *
-     * @return  self
      */ 
     public function setReference(string $reference)
     {
@@ -78,7 +99,7 @@ class Shipment
      *
      * @return  string
      */ 
-    public function getDelivery_service()
+    public function getDeliveryService()
     {
         return $this->delivery_service;
     }
@@ -87,10 +108,8 @@ class Shipment
      * Set the value of delivery_service
      *
      * @param  string  $delivery_service
-     *
-     * @return  self
      */ 
-    public function setDelivery_service(string $delivery_service)
+    public function setDeliveryService(string $delivery_service)
     {
         $this->delivery_service = $delivery_service;
     }
@@ -109,8 +128,6 @@ class Shipment
      * Set the value of increment
      *
      * @param  string  $increment
-     *
-     * @return  self
      */ 
     public function setIncrement(string $increment)
     {
@@ -122,7 +139,7 @@ class Shipment
      *
      * @return  ShipmentDetail
      */ 
-    public function getShipment_detail()
+    public function getShipmentDetail()
     {
         return $this->shipment_detail;
     }
@@ -131,11 +148,89 @@ class Shipment
      * Set the value of shipment_detail
      *
      * @param  ShipmentDetail  $shipment_detail
-     *
-     * @return  self
      */ 
-    public function setShipment_detail(ShipmentDetail $shipment_detail)
+    public function setShipmentDetail(ShipmentDetail $shipment_detail)
     {
         $this->shipment_detail = $shipment_detail;
+    }
+
+    /**
+     * Get the value of recipient
+     *
+     * @return  Recipient
+     */ 
+    public function getRecipient()
+    {
+        return $this->recipient;
+    }
+
+    /**
+     * Set the value of recipient
+     *
+     * @param  Recipient  $recipient
+     */ 
+    public function setRecipient(Recipient $recipient)
+    {
+        $this->recipient = $recipient;
+    }
+
+    /**
+     * Get the value of sender
+     *
+     * @return  Sender
+     */ 
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Set the value of sender
+     *
+     * @param  Sender  $sender
+     */ 
+    public function setSender(Sender $sender)
+    {
+        $this->sender = $sender;
+    }
+
+    /**
+     * Get the value of products
+     *
+     * @return  array
+     */ 
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Set the value of products
+     *
+     * @param  array  $products
+     */ 
+    public function setProducts(array $products)
+    {
+        $this->products = $products;
+    }
+
+    /**
+     * Get the value of packages
+     *
+     * @return  array
+     */ 
+    public function getPackages()
+    {
+        return $this->packages;
+    }
+
+    /**
+     * Set the value of packages
+     *
+     * @param  array  $packages
+     */ 
+    public function setPackages(array $packages)
+    {
+        $this->packages = $packages;
     }
 }

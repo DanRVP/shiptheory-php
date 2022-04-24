@@ -1,6 +1,6 @@
 <?php
 
-namespace Shiptheory\http;
+namespace Shiptheory\Http;
 
 class ShiptheoryClient
 {

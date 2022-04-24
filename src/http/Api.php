@@ -1,18 +1,15 @@
 <?php
 
-namespace Shiptheory\http;
-
-use Dotenv\Dotenv;
+namespace Shiptheory\Http;
 
 class Api
 {
     protected $api_token = null;
+    protected const BASE_URL = 'https://api.shiptheory.com/v1/';
 
     public function __construct($api_token = null)
     {
         $this->api_token = $api_token;
-        $dotenv = Dotenv::createUnsafeImmutable(__DIR__);
-        $dotenv->load();
     }
 
     /**
@@ -20,7 +17,7 @@ class Api
      *
      * @param string $endpoint Endpoint to poll.
      * @throws \Exception
-     * @return object|bool JSON object on success or false on fail.
+     * @return object|string
      */
     public function get($endpoint)
     {
@@ -29,7 +26,7 @@ class Api
         try {
             $response = curl_exec($curl);
         } catch (\Exception $e) {
-            echo 'Error: ' . $e->getMessage();
+            return 'Error: ' . $e->getMessage();
         }
 
         curl_close($curl);
@@ -42,7 +39,7 @@ class Api
      * @param string $endpoint Endpoint to poll.
      * @param string $data Data to send.
      * @throws \Exception
-     * @return object|bool JSON object on success or false on fail.
+     * @return object|string
      */
     public function put($endpoint, $data)
     {
@@ -53,7 +50,7 @@ class Api
         try {
             $response = curl_exec($curl);
         } catch (\Exception $e) {
-            echo 'Error: ' . $e->getMessage();
+            return 'Error: ' . $e->getMessage();
         }
 
         curl_close($curl);
@@ -66,7 +63,7 @@ class Api
      * @param string $endpoint Endpoint to poll.
      * @param string $data Data to send.
      * @throws \Exception
-     * @return object|bool JSON object on success or false on fail.
+     * @return object|string
      */
     public function post($endpoint, $data)
     {
@@ -77,7 +74,7 @@ class Api
         try {
             $response = curl_exec($curl);
         } catch (\Exception $e) {
-            echo 'Error: ' . $e->getMessage();
+            return 'Error: ' . $e->getMessage();
         }
 
         curl_close($curl);
@@ -98,7 +95,7 @@ class Api
         ];
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, getenv('SHIPTHEORY_BASE_URL') . $endpoint);
+        curl_setopt($ch, CURLOPT_URL, self::BASE_URL . $endpoint);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
