@@ -8,9 +8,4 @@ use Shiptheotry\Util\ObjectInterface;
 class Sender extends Address implements ObjectInterface
 {
     use ObjectTrait;
-
-    /**
-     * @var TaxNumbers
-     */
-    protected $tax_numbers;
 }
