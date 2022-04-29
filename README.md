@@ -71,6 +71,4 @@ $shipment->setProducts([$product]);
 // Send shipment to Shiptheory
 $data = $shipment->toArray(true);
 $result = $client->bookShipment(json_encode($data));
-
-var_dump($result);
 ```
