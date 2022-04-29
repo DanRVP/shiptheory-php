@@ -67,8 +67,6 @@ class Api
      */
     public function post($endpoint, $data)
     {
-        file_put_contents('test.txt', json_encode(json_decode($data), JSON_PRETTY_PRINT));
-        $curl = $this->makeCurl($endpoint, $data);
         $curl = $this->makeCurl($endpoint);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
