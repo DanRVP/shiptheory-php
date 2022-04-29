@@ -13,5 +13,7 @@
         "psr-4": {
           "Shiptheory\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "license": "MIT"
 }
