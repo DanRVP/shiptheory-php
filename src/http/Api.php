@@ -63,22 +63,30 @@ class Api
      * @param string $endpoint Endpoint to poll.
      * @param string $data Data to send.
      * @throws \Exception
-     * @return object|string
+     * @return Response
      */
     public function post($endpoint, $data)
     {
-        $curl = $this->makeCurl($endpoint);
+        file_put_contents('test.txt', json_encode(json_decode($data), JSON_PRETTY_PRINT));
+        $curl = $this->makeCurl($endpoint, $data);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        $response = new Response();
 
         try {
-            $response = curl_exec($curl);
+            $result = curl_exec($curl);
         } catch (\Exception $e) {
-            return 'Error: ' . $e->getMessage();
+            return $response->setError('Error: ' . $e->getMessage());
         }
 
+        $info = curl_getinfo($curl);
         curl_close($curl);
-        return json_decode($response);
+
+        $response->setBody($result);
+        $response->setCode($info['http_code']);
+
+
+        return $response;
     }
 
     /**
@@ -87,20 +95,22 @@ class Api
      * @param string $endpoint Endpoint URL to poll.
      * @return \CurlHandle
      */
-    private function makeCurl($endpoint)
+    private function makeCurl($endpoint, $data = null)
     {
-        $headers = [
-            'Authorization: Bearer' . $this->api_token,
-            'Content-Type: application/json',
-        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => self::BASE_URL . $endpoint,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => [
+                'Accept: application/json',
+                'Content-Type: application/json',
+                'Authorization:  Bearer' . $this->api_token,
+            ],
+        ]);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, self::BASE_URL . $endpoint);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
-        return $ch;
+        return $curl;
     }
 
     public function getApiToken()

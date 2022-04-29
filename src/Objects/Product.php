@@ -3,7 +3,7 @@
 namespace Shiptheory\Objects;
 
 use Shiptheory\Util\ObjectTrait;
-use Shiptheotry\Util\ObjectInterface;
+use Shiptheory\Util\ObjectInterface;
 
 class Product implements ObjectInterface
 {
@@ -64,7 +64,7 @@ class Product implements ObjectInterface
      *
      * @param  string  $name
      */ 
-    public function setName(string $name)
+    public function setName(string $name = null)
     {
         $this->name = $name;
     }
@@ -84,7 +84,7 @@ class Product implements ObjectInterface
      *
      * @param  string  $sku
      */ 
-    public function setSku(string $sku)
+    public function setSku(string $sku = null)
     {
         $this->sku = $sku;
     }
@@ -104,7 +104,7 @@ class Product implements ObjectInterface
      *
      * @param  integer  $qty
      */ 
-    public function setQty($qty)
+    public function setQty($qty = null)
     {
         $this->qty = $qty;
     }
@@ -124,7 +124,7 @@ class Product implements ObjectInterface
      *
      * @param  float  $value
      */ 
-    public function setValue(float $value)
+    public function setValue(float $value = null)
     {
         $this->value = $value;
     }
@@ -144,7 +144,7 @@ class Product implements ObjectInterface
      *
      * @param  float  $weight
      */ 
-    public function setWeight(float $weight)
+    public function setWeight(float $weight = null)
     {
         $this->weight = $weight;
     }
@@ -164,7 +164,7 @@ class Product implements ObjectInterface
      *
      * @param  string  $commodity_code
      */ 
-    public function setCommodityCode(string $commodity_code)
+    public function setCommodityCode(string $commodity_code = null)
     {
         $this->commodity_code = $commodity_code;
     }
@@ -186,7 +186,7 @@ class Product implements ObjectInterface
      *
      * @return  self
      */ 
-    public function setCommodityDescription(string $commodity_description)
+    public function setCommodityDescription(string $commodity_description = null)
     {
         $this->commodity_description = $commodity_description;
     }
@@ -208,7 +208,7 @@ class Product implements ObjectInterface
      *
      * @return  self
      */ 
-    public function setCommodityManucountry(string $commodity_manucountry)
+    public function setCommodityManucountry(string $commodity_manucountry = null)
     {
         $this->commodity_manucountry = $commodity_manucountry;
     }

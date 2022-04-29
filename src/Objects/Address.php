@@ -3,7 +3,7 @@
 namespace Shiptheory\Objects;
 
 use Shiptheory\Util\ObjectTrait;
-use Shiptheotry\Util\ObjectInterface;
+use Shiptheory\Util\ObjectInterface;
 
 class Address implements ObjectInterface
 {
@@ -89,7 +89,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $company
      */ 
-    public function setCompany(string $company)
+    public function setCompany(string $company = null)
     {
         $this->company = $company;
     }
@@ -109,7 +109,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $firstname
      */ 
-    public function setFirstname(string $firstname)
+    public function setFirstname(string $firstname = null)
     {
         $this->firstname = $firstname;
     }
@@ -129,7 +129,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $lastname
      */ 
-    public function setLastname(string $lastname)
+    public function setLastname(string $lastname = null)
     {
         $this->lastname = $lastname;
     }
@@ -149,7 +149,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $address_line_1
      */ 
-    public function setAddressLine1(string $address_line_1)
+    public function setAddressLine1(string $address_line_1 = null)
     {
         $this->address_line_1 = $address_line_1;
     }
@@ -169,7 +169,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $address_line_2
      */ 
-    public function setAddressLine2(string $address_line_2)
+    public function setAddressLine2(string $address_line_2 = null)
     {
         $this->address_line_2 = $address_line_2;
     }
@@ -189,7 +189,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $address_line_3
      */ 
-    public function setAddressLine3(string $address_line_3)
+    public function setAddressLine3(string $address_line_3 = null)
     {
         $this->address_line_3 = $address_line_3;
     }
@@ -209,7 +209,7 @@ class Address implements ObjectInterface
      *
      * @param  string;  $city
      */ 
-    public function setCity(string $city)
+    public function setCity(string $city = null)
     {
         $this->city = $city;
     }
@@ -229,7 +229,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $country
      */ 
-    public function setCountry(string $country)
+    public function setCountry(string $country = null)
     {
         $this->country = $country;
     }
@@ -250,7 +250,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $postcode
      */ 
-    public function setPostcode(string $postcode)
+    public function setPostcode(string $postcode = null)
     {
         $this->postcode = $postcode;
     }
@@ -270,7 +270,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $telephone
      */ 
-    public function setTelephone(string $telephone)
+    public function setTelephone(string $telephone = null)
     {
         $this->telephone = $telephone;
     }
@@ -290,7 +290,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $mobile
      */ 
-    public function setMobile(string $mobile)
+    public function setMobile(string $mobile = null)
     {
         $this->mobile = $mobile;
     }
@@ -310,7 +310,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $email
      */ 
-    public function setEmail(string $email)
+    public function setEmail(string $email = null)
     {
         $this->email = $email;
     }
@@ -330,7 +330,7 @@ class Address implements ObjectInterface
      *
      * @param  string  $tax_number
      */ 
-    public function setTax_number(string $tax_number)
+    public function setTax_number(string $tax_number = null)
     {
         $this->tax_number = $tax_number;
     }

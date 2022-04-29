@@ -2,7 +2,7 @@
 
 namespace Shiptheory\Util;
 
-use Shiptheotry\Util\ObjectInterface;
+use Shiptheory\Util\ObjectInterface;
 
 trait ObjectTrait
 {
@@ -12,18 +12,20 @@ trait ObjectTrait
      *
      * @return array
      */
-    public function toArray()
+    public function toArray($remove_null_fields = false)
     {
         $array = [];
         $vars = get_object_vars($this);
 
         foreach ($vars as $key => $value) {
             if($value instanceof ObjectInterface) {
-                $array[$key] = $value->toArray();
+                $array[$key] = $value->toArray($remove_null_fields);
             } else if (is_array($value)) {
                 foreach ($value as $k => $v) {
-                    $array[$key][$k] = $v->toArray();
+                    $array[$key][$k] = $v->toArray($remove_null_fields);
                 }
+            } else if ($remove_null_fields && $value == null) {
+                continue;
             } else {
                 $array[$key] = $value;
             }

@@ -3,7 +3,7 @@
 namespace Shiptheory\Objects;
 
 use Shiptheory\Util\ObjectTrait;
-use Shiptheotry\Util\ObjectInterface;
+use Shiptheory\Util\ObjectInterface;
 
 class ShipmentDetail implements ObjectInterface
 {
@@ -313,9 +313,9 @@ class ShipmentDetail implements ObjectInterface
     /**
      * Set the value of ship_date
      *
-     * @param  \DateTime  $ship_date
+     * @param  string  $ship_date
      */ 
-    public function setShipDate(\DateTime $ship_date)
+    public function setShipDate(string $ship_date)
     {
         $this->ship_date = $ship_date;
     }

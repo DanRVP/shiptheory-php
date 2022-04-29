@@ -3,7 +3,7 @@
 namespace Shiptheory\Objects;
 
 use Shiptheory\Util\ObjectTrait;
-use Shiptheotry\Util\ObjectInterface;
+use Shiptheory\Util\ObjectInterface;
 
 class Package implements ObjectInterface
 {
@@ -34,7 +34,7 @@ class Package implements ObjectInterface
      *
      * @param  integer  $id
      */ 
-    public function setId($id)
+    public function setId($id = null)
     {
         $this->id = $id;
     }
@@ -54,7 +54,7 @@ class Package implements ObjectInterface
      *
      * @param  float  $weight
      */ 
-    public function setWeight(float $weight)
+    public function setWeight(float $weight = null)
     {
         $this->weight = $weight;
     }

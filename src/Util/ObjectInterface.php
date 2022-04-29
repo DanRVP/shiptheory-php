@@ -1,6 +1,6 @@
 <?php
 
-namespace Shiptheotry\Util;
+namespace Shiptheory\Util;
 
 interface ObjectInterface
 {

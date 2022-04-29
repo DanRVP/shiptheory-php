@@ -3,9 +3,9 @@
 namespace Shiptheory\Objects;
 
 use Shiptheory\Util\ObjectTrait;
-use Shiptheotry\Util\ObjectInterface;
+use Shiptheory\Util\ObjectInterface;
 
-class TaxNumbers implements ObjectInterface
+class TaxNumber implements ObjectInterface
 {
     use ObjectTrait;
 
@@ -18,6 +18,12 @@ class TaxNumbers implements ObjectInterface
      * @var string Enum of AddressTaxNumberTypes::TYPES
      */
     protected $tax_number_type;
+
+    public function __construct($number, $type)
+    {
+        $this->setTaxNumber($number);
+        $this->setTaxNumberType($type);
+    }
 
     /**
      * Get the value of tax_number

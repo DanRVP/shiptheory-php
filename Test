@@ -1,0 +1,82 @@
+#!/usr/bin/php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Shiptheory\Http\ShiptheoryClient;
+use Shiptheory\Objects\Product;
+use Shiptheory\Objects\Recipient;
+use Shiptheory\Objects\Sender;
+use Shiptheory\Objects\Shipment;
+use Shiptheory\Objects\ShipmentDetail;
+use Shiptheory\Objects\TaxNumber;
+use Shiptheory\Objects\TaxNumberTypes;
+
+$client = new ShiptheoryClient('dan.rogers@shiptheory.com', 'Dtr04038991!');
+$client->getAccessToken();
+
+//Start new shipment data object
+$shipment = new Shipment();
+$shipment->setReference('Test1234');
+$shipment->setReference2('1234Test');
+
+// Set Shipment Details
+$shipment_detail = new ShipmentDetail();
+$shipment_detail->setWeight(1);
+$shipment_detail->setParcels(1);
+$shipment_detail->setValue(1);
+$shipment_detail->setShippingPrice(2.99);
+$shipment_detail->setReference3('ORDERREF3');
+$shipment_detail->setSalesSource('My Store');
+$shipment_detail->setShipDate('2022-04-29');
+$shipment_detail->setCurrencyCode('GBP');
+
+// Set Recipient
+$reciever = new Recipient();
+$reciever->setCompany('Shiptheory');
+$reciever->setFirstname('Test');
+$reciever->setLastname('Customer');
+$reciever->setAddressLine1('Unit 4.1 Paintworks');
+$reciever->setAddressLine2('Bath Road');
+$reciever->setCity('Bristol');
+$reciever->setCountry('GB');
+$reciever->setPostcode('BS4 3EH');
+$reciever->setEmail('recipient@test.com');
+$reciever->setTelephone('01234567890');
+$eori = new TaxNumber('GB205672212000', TaxNumberTypes::EORI);
+$vat = new TaxNumber('GB123456789', TaxNumberTypes::VAT);
+$reciever->setTaxNumbers([$eori, $vat]);
+
+// Set sender
+$sender = new Sender();
+$sender->setCompany('Shiptheory');
+$sender->setFirstname('Test');
+$sender->setLastname('Shipper');
+$sender->setAddressLine1('Bristol Old Vic');
+$sender->setAddressLine2('King Street');
+$sender->setCity('Bristol');
+$sender->setCountry('GB');
+$sender->setPostcode('BS1 4ED');
+$sender->setEmail('sender@test.com');
+$sender->setTelephone('01234567890');
+
+// Set Product
+$product = new Product();
+$product->setName('My Test Product');
+$product->setSku('TestProd1');
+$product->setQty(1);
+$product->setValue(1);
+$product->setWeight(1);
+$product->setCommodityCode('8443991000');
+$product->setCommodityManucountry('PL');
+
+// Add all elements to the shipment
+$shipment->setShipmentDetail($shipment_detail);
+$shipment->setRecipient($reciever);
+$shipment->setSender($sender);
+$shipment->setProducts([$product]);
+
+// Send shipment to Shiptheory
+$data = $shipment->toArray(true);
+$result = $client->bookShipment(json_encode($data));
+
+var_dump($result);

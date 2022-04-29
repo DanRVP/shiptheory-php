@@ -2,9 +2,6 @@
 
 namespace Shiptheory\Objects;
 
-use Shiptheory\Util\ObjectTrait;
-use Shiptheotry\Util\ObjectInterface;
-
 class AddressTaxNumberTypes
 {
     const TYPES = [

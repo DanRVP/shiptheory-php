@@ -2,10 +2,24 @@
 
 namespace Shiptheory\Http;
 
+use DateTime;
+use Shiptheory\Http\AccessToken;
+
 class ShiptheoryClient
 {
+    /**
+     * @var AccessToken
+     */
     protected $token;
+
+    /**
+     * @var string
+     */
     protected $username;
+
+    /**
+     * @var
+     */
     protected $password;
 
     public function __construct($username, $password)
@@ -14,30 +28,44 @@ class ShiptheoryClient
         $this->password = $password;
     }
 
-    public function getAccessToken($username, $password)
+    public function getAccessToken()
     {
         $data = [
-            'email' => $username,
-            'password' => $password,
+            'email' => $this->username,
+            'password' => $this->password,
         ];
 
         $api = new Api();
-        return $api->post('token', json_encode($data));
+        $response = $api->post('token', json_encode($data));
+
+        if ($response->getCode() == 200) {
+            $token = json_decode($response->getBody())->data->token;
+            $this->token = new AccessToken($token, new DateTime());
+            return true;
+        }
+
+        return false;
     }
 
-    private function validateToken()
+    public function validateToken()
     {
-        if (empty($this->token)) {
-            $result = $this->getAccessToken($this->username, $this->password);
-            if (property_exists('success', $result)) {
-                $this->token = $result->data->token;
-                return true;
-            }
-
-            return false;
+        if (empty($this->token) || $this->checkTokenLifeExpired($this->token)) {
+            return $this->getAccessToken($this->username, $this->password);
         }
 
         return true;
+    }
+
+    private function checkTokenLifeExpired($token)
+    {
+        $diff = $token->getAge()->diff(new DateTime());
+        $minutes = 0;
+        $minutes += $diff->d * 1440;
+        $minutes += $diff->h * 60;
+        $minutes += $diff->i;
+
+        // Expire tokens 2 mins before expiry in case speeds are slow
+        return $minutes > 58;
     }
 
     public function bookShipment($data)
@@ -46,7 +74,7 @@ class ShiptheoryClient
             return false;
         }
 
-        $api = new Api($this->token);
+        $api = new Api($this->token->getToken());
         return $api->post('shipments', $data);
     }
 
