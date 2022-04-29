@@ -41,30 +41,6 @@ class Api
     }
 
     /**
-     * Perfoms a PUT request to the Shortcut API using CURL.
-     *
-     * @param string $endpoint Endpoint to poll.
-     * @param string $data Data to send.
-     * @throws \Exception
-     * @return object|string
-     */
-    public function put($endpoint, $data)
-    {
-        $curl = $this->makeCurl($endpoint);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-        try {
-            $response = curl_exec($curl);
-        } catch (\Exception $e) {
-            return 'Error: ' . $e->getMessage();
-        }
-
-        curl_close($curl);
-        return json_decode($response);
-    }
-
-    /**
      * Perfoms a POST request to the Shortcut API using CURL.
      *
      * @param string $endpoint Endpoint to poll.

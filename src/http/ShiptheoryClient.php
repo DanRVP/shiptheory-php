@@ -28,6 +28,11 @@ class ShiptheoryClient
         $this->password = $password;
     }
 
+    /**
+     * Get a new access token and save it into memory. 
+     * 
+     * @return bool
+     */
     public function getAccessToken()
     {
         $data = [
@@ -47,6 +52,9 @@ class ShiptheoryClient
         return false;
     }
 
+    /**
+     * Checks to see if a token exists or has expired. If it has, then fetch a new one. 
+     */
     public function validateToken()
     {
         if (empty($this->token) || $this->checkTokenLifeExpired($this->token)) {
@@ -56,6 +64,9 @@ class ShiptheoryClient
         return true;
     }
 
+    /**
+     * Check to see if a token has expired beyond its 60 min lifetime.
+     */
     private function checkTokenLifeExpired($token)
     {
         $diff = $token->getAge()->diff(new DateTime());
