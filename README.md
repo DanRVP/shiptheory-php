@@ -2,6 +2,12 @@
 
 API client to communicate with the Shiptheory API
 
+## Example of viewing a shipment
+```php
+$client = new ShiptheoryClient('test@test.com', 'Password123!');
+$result = $client->viewShipment('Test1234')
+```
+
 ## Example of booking a shipment
 ```php
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
