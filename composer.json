@@ -1,7 +1,17 @@
 {
+    "name": "dan-rogers/shiptheory-php",
+    "description": "An API client to communicate with the Shiptheory API",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Dan Rogers",
+            "email": "dan.rogers@shiptheory.com"
+        }
+    ],
+    "require": {},
     "autoload": {
         "psr-4": {
           "Shiptheory\\": "src/"
         }
-      }
+    }
 }
