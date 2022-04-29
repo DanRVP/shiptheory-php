@@ -81,3 +81,5 @@ $data = $shipment->toArray(true);
 $result = $client->bookShipment(json_encode($data));
 
 var_dump($result);
+
+var_dump($client->viewShipment('Test1234'));

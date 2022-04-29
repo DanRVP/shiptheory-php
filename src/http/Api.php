@@ -21,16 +21,23 @@ class Api
      */
     public function get($endpoint)
     {
+        $response = new Response();
         $curl = $this->makeCurl($endpoint);
 
         try {
-            $response = curl_exec($curl);
+            $result = curl_exec($curl);
         } catch (\Exception $e) {
-            return 'Error: ' . $e->getMessage();
+            return $response->setError('Error: ' . $e->getMessage());
         }
 
+        $info = curl_getinfo($curl);
         curl_close($curl);
-        return json_decode($response);
+
+        $response->setBody($result);
+        $response->setCode($info['http_code']);
+
+
+        return $response;
     }
 
     /**

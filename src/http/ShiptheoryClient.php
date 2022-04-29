@@ -68,6 +68,12 @@ class ShiptheoryClient
         return $minutes > 58;
     }
 
+    /**
+     * Book in a shipment with Shiptheory
+     * 
+     * @param string $data json string of data.
+     * @return Response
+     */
     public function bookShipment($data)
     {
         if (!$this->validateToken()) {
@@ -78,8 +84,19 @@ class ShiptheoryClient
         return $api->post('shipments', $data);
     }
 
+    /**
+     * View a shipment 
+     * 
+     * @param string $reference The unique reference used when creating the shipment.
+     * @return Response
+     */
     public function viewShipment($reference) 
     {
+        if (!$this->validateToken()) {
+            return false;
+        }
 
+        $api = new Api($this->token->getToken());
+        return $api->get('shipments/' . $reference);
     }
 }
