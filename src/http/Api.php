@@ -69,6 +69,7 @@ class Api
     {
         file_put_contents('test.txt', json_encode(json_decode($data), JSON_PRETTY_PRINT));
         $curl = $this->makeCurl($endpoint, $data);
+        $curl = $this->makeCurl($endpoint);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         $response = new Response();
@@ -95,18 +96,21 @@ class Api
      * @param string $endpoint Endpoint URL to poll.
      * @return \CurlHandle
      */
-    private function makeCurl($endpoint, $data = null)
+    private function makeCurl($endpoint)
     {
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => self::BASE_URL . $endpoint,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_ENCODING => '',
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json',
                 'Content-Type: application/json',
-                'Authorization:  Bearer' . $this->api_token,
+                'Authorization:  Bearer ' . $this->api_token,
             ],
         ]);
 

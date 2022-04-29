@@ -2,22 +2,23 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
+use Shiptheory\Http\Api;
 use Shiptheory\Http\ShiptheoryClient;
+use Shiptheory\Objects\AddressTaxNumberTypes;
 use Shiptheory\Objects\Product;
 use Shiptheory\Objects\Recipient;
 use Shiptheory\Objects\Sender;
 use Shiptheory\Objects\Shipment;
 use Shiptheory\Objects\ShipmentDetail;
 use Shiptheory\Objects\TaxNumber;
-use Shiptheory\Objects\TaxNumberTypes;
 
-$client = new ShiptheoryClient('dan.rogers@shiptheory.com', 'Dtr04038991!');
+$client = new ShiptheoryClient('test@test.com', 'Password123!');
 $client->getAccessToken();
 
 //Start new shipment data object
 $shipment = new Shipment();
 $shipment->setReference('Test1234');
-$shipment->setReference2('1234Test');
+$shipment->setReference2('Test5678');
 
 // Set Shipment Details
 $shipment_detail = new ShipmentDetail();
@@ -27,7 +28,7 @@ $shipment_detail->setValue(1);
 $shipment_detail->setShippingPrice(2.99);
 $shipment_detail->setReference3('ORDERREF3');
 $shipment_detail->setSalesSource('My Store');
-$shipment_detail->setShipDate('2022-04-29');
+$shipment_detail->setShipDate('2022-04-30');
 $shipment_detail->setCurrencyCode('GBP');
 
 // Set Recipient
@@ -42,8 +43,8 @@ $reciever->setCountry('GB');
 $reciever->setPostcode('BS4 3EH');
 $reciever->setEmail('recipient@test.com');
 $reciever->setTelephone('01234567890');
-$eori = new TaxNumber('GB205672212000', TaxNumberTypes::EORI);
-$vat = new TaxNumber('GB123456789', TaxNumberTypes::VAT);
+$eori = new TaxNumber('GB205672212000', AddressTaxNumberTypes::EORI);
+$vat = new TaxNumber('GB123456789', AddressTaxNumberTypes::VAT);
 $reciever->setTaxNumbers([$eori, $vat]);
 
 // Set sender

@@ -4,9 +4,7 @@ namespace Shiptheory\Objects;
 
 class AddressTaxNumberTypes
 {
-    const TYPES = [
-        'EORI' => 'EORI',
-        'IOSS' => 'IOSS',
-        'PID' => 'PID',
-    ];
+    const EORI = 'EORI';
+    const PID = 'PID';
+    const VAT = 'VAT';
 }
