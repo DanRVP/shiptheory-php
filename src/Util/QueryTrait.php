@@ -9,6 +9,12 @@ trait QueryTrait
         $this->setFields($fields);
     }
 
+    /**
+     * Convert the current array of fields to a query params string. 
+     * 
+     * @param bool $strict If enabled then invalid fields will be stripped.
+     * @return string
+     */
     public function toQueryParams(bool $strict = true)
     {
         $fields = $this->fields;
@@ -26,21 +32,31 @@ trait QueryTrait
      * so spaces appear as spaces. 
      * 
      * @param array $fields
+     * @return string
      */
-    private function buildQuery(array $fields)
+    protected function buildQuery(array $fields)
     {
         $query_string = '?';
-        $query_string .= implode('&', array_map(function ($value, $key) {
-            return "$key=$value";
-        }, $fields));
-        return rtrim($query_string, '&');
+        return $query_string .= implode('&', array_map(fn($key, $value) => "$key=$value", array_keys($fields), $fields));
     }
 
+    /**
+     * Adds extra fields to the current field list.
+     * 
+     * @param array $fields Fields to add.
+     * @return void
+     */
     public function addFields(array $fields) {
         $this->fields = array_merge($this->fields, $fields);
     }
 
-    private function addExtraValidFields(array $fields)
+    /**
+     * Adds extra fields to the valid fields list.
+     * 
+     * @param array $fields Fields to add.
+     * @return void
+     */
+    protected function addExtraValidFields(array $fields)
     {
         $this->valid_fields = array_merge($this->valid_fields, $fields);
     }

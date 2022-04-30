@@ -10,9 +10,7 @@ class ShipmentQuery implements QueryInterface
     use QueryTrait;
 
     protected $fields = [];
-    private $valid_fields = [
-        'created',
-        'modified',
+    protected $valid_fields = [
         'limit',
         'status',
         'channel_name',

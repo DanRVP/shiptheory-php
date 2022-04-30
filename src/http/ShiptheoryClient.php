@@ -85,7 +85,7 @@ class ShiptheoryClient
      * @param string $data json string of data.
      * @return Response
      */
-    public function bookShipment($data)
+    public function bookShipment(string $data)
     {
         if (!$this->validateToken()) {
             return false;
@@ -101,7 +101,7 @@ class ShiptheoryClient
      * @param string $reference The unique reference used when creating the shipment.
      * @return Response
      */
-    public function viewShipment($reference) 
+    public function viewShipment(string $reference) 
     {
         if (!$this->validateToken()) {
             return false;
@@ -109,5 +109,35 @@ class ShiptheoryClient
 
         $api = new Api($this->token->getToken());
         return $api->get('shipments/' . $reference);
+    }
+
+    /**
+     * Calls the shipment/list API endpoint and returns a result.
+     * 
+     * @param string $query_params URL query params to filter by.
+     */
+    public function listShipment(string $query_params)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('shipments/list' . $query_params);
+    }
+
+    /**
+     * Calls the shipment/search API endpoint and returns a result.
+     * 
+     * @param string $query_params URL query params to filter by.
+     */
+    public function searchShipment(string $query_params)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('shipments/search' . $query_params);
     }
 }

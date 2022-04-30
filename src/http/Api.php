@@ -98,11 +98,17 @@ class Api
         return $curl;
     }
 
+    /**
+     * Get the current API token
+     */
     public function getApiToken()
     {
         return $this->api_token;
     }
 
+    /**
+     * Set the current API token
+     */
     public function setApiToken($token)
     {
         $this->api_token = $token;

@@ -2,12 +2,11 @@
 
 namespace Shiptheory\Objects;
 
-class SearchShipmentQuery extends ShipmentQuery
+class ListShipmentQuery extends ShipmentQuery
 {
     const EXTRA_VALID_FIELDS = [
-        'include_products',
-        'created_from',
-        'created_to',
+        'created',
+        'modified'
     ];
 
     public function __construct(array $fields)
