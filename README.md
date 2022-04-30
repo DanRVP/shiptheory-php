@@ -2,6 +2,12 @@
 
 API client to communicate with the Shiptheory API
 
+## Installation
+Require with composer:
+```
+composer require dan-rogers/shiptheory-php
+```
+
 ## Example of viewing a shipment
 ```php
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
