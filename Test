@@ -2,7 +2,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use Shiptheory\Http\Api;
 use Shiptheory\Http\ShiptheoryClient;
 use Shiptheory\Objects\AddressTaxNumberTypes;
 use Shiptheory\Objects\ListShipmentQuery;
