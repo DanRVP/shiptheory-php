@@ -14,10 +14,37 @@ $client = new ShiptheoryClient('test@test.com', 'Password123!');
 $result = $client->viewShipment('Test1234')
 ```
 
+## Example of listing shipments
+```php
+$client = new ShiptheoryClient('test@test.com', 'Password123!');
+$list_fields = [
+    'channel_name' => 'Api',
+    'status' => 'Ignored',
+    'limit' => 1
+];
+
+$list_query = new ListShipmentQuery($list_fields);
+$params = $list_query->toQueryParams();
+$client->listShipment($params);
+```
+
+## Example of searching for shipments
+```php
+$client = new ShiptheoryClient('test@test.com', 'Password123!');
+$search_fields = [
+    'created_from' => '2022-04-01',
+    'created_to' => '2022-04-30',
+    'include_products' => 1,
+];
+
+$search_query = new SearchShipmentQuery($search_fields);
+$params = $search_query->toQueryParams();
+$client->searchShipment($params);
+```
+
 ## Example of booking a shipment
 ```php
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
-$client->getAccessToken();
 
 //Start new shipment data object
 $shipment = new Shipment();
