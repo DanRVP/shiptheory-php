@@ -15,7 +15,7 @@ use Shiptheory\Objects\ShipmentDetail;
 use Shiptheory\Objects\ShipmentQuery;
 use Shiptheory\Objects\TaxNumber;
 
-$client = new ShiptheoryClient('dan.rogers@shiptheory.com', 'm4MSUQv28!DW2M!');
+$client = new ShiptheoryClient('test@test.com', 'Password123!');
 
 //Start new shipment data object
 $shipment = new Shipment();
