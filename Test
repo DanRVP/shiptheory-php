@@ -12,7 +12,6 @@ use Shiptheory\Objects\SearchShipmentQuery;
 use Shiptheory\Objects\Sender;
 use Shiptheory\Objects\Shipment;
 use Shiptheory\Objects\ShipmentDetail;
-use Shiptheory\Objects\ShipmentQuery;
 use Shiptheory\Objects\TaxNumber;
 
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
