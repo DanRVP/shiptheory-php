@@ -13,7 +13,7 @@ class Api
     }
 
     /**
-     * Perfoms a GET request to the Shortcut API using CURL.
+     * Perfoms a GET request using CURL.
      *
      * @param string $endpoint Endpoint to poll.
      * @throws \Exception
@@ -35,13 +35,13 @@ class Api
 
         $response->setBody($result);
         $response->setCode($info['http_code']);
-
+        $response->setUrl($info['url']);
 
         return $response;
     }
 
     /**
-     * Perfoms a POST request to the Shortcut API using CURL.
+     * Perfoms a POST request to using CURL.
      *
      * @param string $endpoint Endpoint to poll.
      * @param string $data Data to send.
@@ -66,7 +66,38 @@ class Api
 
         $response->setBody($result);
         $response->setCode($info['http_code']);
+        $response->setUrl($info['url']);
 
+        return $response;
+    }
+
+     /**
+     * Perfoms a PUT request using CURL.
+     *
+     * @param string $endpoint Endpoint to poll.
+     * @param string $data Data to send.
+     * @throws \Exception
+     * @return Response
+     */
+    public function put($endpoint, $data)
+    {
+        $curl = $this->makeCurl($endpoint);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        $response = new Response();
+
+        try {
+            $result = curl_exec($curl);
+        } catch (\Exception $e) {
+            return $response->setError('Error: ' . $e->getMessage());
+        }
+
+        $info = curl_getinfo($curl);
+        curl_close($curl);
+
+        $response->setBody($result);
+        $response->setCode($info['http_code']);
+        $response->setUrl($info['url']);
 
         return $response;
     }

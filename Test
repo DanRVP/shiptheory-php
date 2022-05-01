@@ -7,6 +7,7 @@ use Shiptheory\Objects\AddressTaxNumberTypes;
 use Shiptheory\Objects\ListShipmentQuery;
 use Shiptheory\Objects\PackageQuery;
 use Shiptheory\Objects\Product;
+use Shiptheory\Objects\ProductQuery;
 use Shiptheory\Objects\Recipient;
 use Shiptheory\Objects\ReturnLabel;
 use Shiptheory\Objects\SearchShipmentQuery;
@@ -80,12 +81,12 @@ $shipment->setSender($sender);
 $shipment->setProducts([$product]);
 
 // Send shipment to Shiptheory
-$data = $shipment->toArray(true);
-$result = $client->bookShipment(json_encode($data));
+$data = $shipment->toJson(true);
+$result = $client->bookShipment($data);
 
 var_dump($result);
 
-// View a shipment
+// // View a shipment
 var_dump($client->viewShipment('Test1234'));
 
 // List shipments
@@ -109,23 +110,25 @@ var_dump($client->searchShipment($search_query->toQueryParams()));
 
 // Search for packages
 $package_fields = [
-    'name' => 'Test Package',
     'length' => 25,
     'width' => 25,
     'height' => 25,
 ];
 
 $package_query = new PackageQuery($package_fields);
-var_dump($client->searchShipment($package_query->toQueryParams()));
+var_dump($client->getPackageSizes($package_query->toQueryParams()));
+
+// List services
+var_dump($client->getOutgoingDeliveryServices());
 
 // Create a return label
 $label = new ReturnLabel();
 $label->setOutgoingReference('Test1234');
 $label->setDeliveryPostcode('BS4 3EH');
 $label->setReturnService(1);
-$label->setExpiry('2022-04-30');
+$label->setExpiry('2022-05-30');
 
-$data = json_encode($label->toArray(true));
+$data = $label->toJson(true);
 var_dump($client->createReturnLabel($data));
 
 // Add a new Product
@@ -143,5 +146,24 @@ $product->setLength(25);
 $product->setWidth(27.69);
 $product->setHeight(4.66);
 
-$data = json_encode($product->toArray(true));
+$data = $product->toJson(true);
 var_dump($client->addProduct($data));
+
+// View a product
+var_dump($client->viewProduct('API-Product-1'));
+
+// Update a product
+$product = new Product();
+$product->setPrice(5.99);
+
+$data = $product->toJson(true);
+var_dump($client->updateProduct('API-Product-1', $data));
+
+// List products
+$product_fields = [
+    'weight' => 1.5,
+    'limit' => 25
+];
+
+$product_query = new ProductQuery($product_fields);
+var_dump($client->listProducts($product_query->toQueryParams()));

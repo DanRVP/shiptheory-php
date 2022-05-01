@@ -210,7 +210,7 @@ class ShiptheoryClient
     }
 
     /**
-     * Add a new product. Products with SKUs already in ST will be updated.
+     * Add a new product.
      * 
      * @param string $data json string of data.
      * @return Response
@@ -226,6 +226,22 @@ class ShiptheoryClient
     }
 
     /**
+     * Update a product.
+     * 
+     * @param string $data json string of data.
+     * @return Response
+     */
+    public function updateProduct(string $sku, string $data)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->put('products/update/' . $sku, $data);
+    }
+
+    /**
      * View a product from your product catalouge.
      * 
      * @param string $sku The unique product SKU. 
@@ -238,6 +254,22 @@ class ShiptheoryClient
         }
 
         $api = new Api($this->token->getToken());
-        return $api->get('products/' . $sku);
+        return $api->get('products/view/' . $sku);
+    }
+
+    /**
+     * View a list of products from your product catalouge.
+     * 
+     * @param string $sku The unique product SKU. 
+     * @return Response
+     */
+    public function listProducts(string $query_params)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('products' . $query_params);
     }
 }

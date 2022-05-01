@@ -19,10 +19,16 @@ class Response
      */
     protected $error;
 
-    public function __construct($body = null, $code = null)
+    /**
+     * @var string
+     */
+    protected $url;
+
+    public function __construct($body = null, $code = null, $url = null)
     {
         $this->setBody($body);
         $this->setCode($code);
+        $this->setUrl($url);
     }
 
     /**
@@ -89,5 +95,25 @@ class Response
     public function setError(string $error)
     {
         $this->error = $error;
+    }
+
+    /**
+     * Get the value of url
+     *
+     * @return  string
+     */ 
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set the value of url
+     *
+     * @param  string  $url
+     */ 
+    public function setUrl(string $url = null)
+    {
+        $this->url = $url;
     }
 }

@@ -35,6 +35,21 @@ trait ObjectTrait
     }
 
     /**
+     * Converts object to a json string.
+     *
+     * @return string
+     */
+    public function toJson(bool $remove_null_fields = false, bool $pretty_print = false)
+    {
+        $arrayed = $remove_null_fields ? $this->toArray(true) : $this->toArray();
+        if ($pretty_print) {
+            return json_encode($arrayed, JSON_PRETTY_PRINT);
+        }
+
+        return json_encode($arrayed);
+    }
+
+    /**
      * Removes a property from this object
      *
      * @param string $name Name of property to remove
