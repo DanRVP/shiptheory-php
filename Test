@@ -5,12 +5,15 @@ require __DIR__ . '/vendor/autoload.php';
 use Shiptheory\Http\ShiptheoryClient;
 use Shiptheory\Objects\AddressTaxNumberTypes;
 use Shiptheory\Objects\ListShipmentQuery;
+use Shiptheory\Objects\PackageQuery;
 use Shiptheory\Objects\Product;
 use Shiptheory\Objects\Recipient;
+use Shiptheory\Objects\ReturnLabel;
 use Shiptheory\Objects\SearchShipmentQuery;
 use Shiptheory\Objects\Sender;
 use Shiptheory\Objects\Shipment;
 use Shiptheory\Objects\ShipmentDetail;
+use Shiptheory\Objects\ShipmentProduct;
 use Shiptheory\Objects\TaxNumber;
 
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
@@ -61,7 +64,7 @@ $sender->setEmail('sender@test.com');
 $sender->setTelephone('01234567890');
 
 // Set Product
-$product = new Product();
+$product = new ShipmentProduct();
 $product->setName('My Test Product');
 $product->setSku('TestProd1');
 $product->setQty(1);
@@ -103,3 +106,42 @@ $search_fields = [
 
 $search_query = new SearchShipmentQuery($search_fields);
 var_dump($client->searchShipment($search_query->toQueryParams()));
+
+// Search for packages
+$package_fields = [
+    'name' => 'Test Package',
+    'length' => 25,
+    'width' => 25,
+    'height' => 25,
+];
+
+$package_query = new PackageQuery($package_fields);
+var_dump($client->searchShipment($package_query->toQueryParams()));
+
+// Create a return label
+$label = new ReturnLabel();
+$label->setOutgoingReference('Test1234');
+$label->setDeliveryPostcode('BS4 3EH');
+$label->setReturnService(1);
+$label->setExpiry('2022-04-30');
+
+$data = json_encode($label->toArray(true));
+var_dump($client->createReturnLabel($data));
+
+// Add a new Product
+$product = new Product();
+$product->setSku('API-Product-1');
+$product->setName('API Test Product');
+$product->setPrice(1.99);
+$product->setWeight(1.5);
+$product->setBarcode('0123456789');
+$product->setCommodityCode('8443991000');
+$product->setCommodityManucountry('GB');
+$product->setCommodityDescription('This is a test product');
+$product->setCommodityComposition('Electronic components');
+$product->setLength(25);
+$product->setWidth(27.69);
+$product->setHeight(4.66);
+
+$data = json_encode($product->toArray(true));
+var_dump($client->addProduct($data));

@@ -5,211 +5,157 @@ namespace Shiptheory\Objects;
 use Shiptheory\Util\ObjectTrait;
 use Shiptheory\Util\ObjectInterface;
 
-class Product implements ObjectInterface
+class Product extends SharedProduct
 {
     use ObjectTrait;
 
     /**
-     * @var string
+     * @var float
      */
-    protected $name;
+    protected $price;
 
     /**
      * @var string
      */
-    protected $sku;
+    protected $barcode;
 
     /**
-     * @var integer
+     * @var string
      */
-    protected $qty;
+    protected $commodity_composition;
 
     /**
      * @var float
      */
-    protected $value;
+    protected $length;
 
     /**
      * @var float
      */
-    protected $weight;
+    protected $width;
 
     /**
-     * @var string
+     * @var float
      */
-    protected $commodity_code;
+    protected $height;
 
     /**
-     * @var string
-     */
-    protected $commodity_description;
-
-    /**
-     * @var string
-     */
-    protected $commodity_manucountry;
-
-    /**
-     * Get the value of name
-     *
-     * @return  string
-     */ 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set the value of name
-     *
-     * @param  string  $name
-     */ 
-    public function setName(string $name = null)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * Get the value of sku
-     *
-     * @return  string
-     */ 
-    public function getSku()
-    {
-        return $this->sku;
-    }
-
-    /**
-     * Set the value of sku
-     *
-     * @param  string  $sku
-     */ 
-    public function setSku(string $sku = null)
-    {
-        $this->sku = $sku;
-    }
-
-    /**
-     * Get the value of qty
-     *
-     * @return  integer
-     */ 
-    public function getQty()
-    {
-        return $this->qty;
-    }
-
-    /**
-     * Set the value of qty
-     *
-     * @param  integer  $qty
-     */ 
-    public function setQty($qty = null)
-    {
-        $this->qty = $qty;
-    }
-
-    /**
-     * Get the value of value
+     * Get the value of price
      *
      * @return  float
      */ 
-    public function getValue()
+    public function getPrice()
     {
-        return $this->value;
+        return $this->price;
     }
 
     /**
-     * Set the value of value
+     * Set the value of price
      *
-     * @param  float  $value
+     * @param  float  $price
      */ 
-    public function setValue(float $value = null)
+    public function setPrice(float $price = null)
     {
-        $this->value = $value;
+        $this->price = $price;
     }
 
     /**
-     * Get the value of weight
+     * Get the value of barcode
+     *
+     * @return  string
+     */ 
+    public function getBarcode()
+    {
+        return $this->barcode;
+    }
+
+    /**
+     * Set the value of barcode
+     *
+     * @param  string  $barcode
+     */ 
+    public function setBarcode(string $barcode = null)
+    {
+        $this->barcode = $barcode;
+    }
+
+    /**
+     * Get the value of commodity_composition
+     *
+     * @return  string
+     */ 
+    public function getCommodityComposition()
+    {
+        return $this->commodity_composition;
+    }
+
+    /**
+     * Set the value of commodity_composition
+     *
+     * @param  string  $commodity_composition
+     */ 
+    public function setCommodityComposition(string $commodity_composition = null)
+    {
+        $this->commodity_composition = $commodity_composition;
+    }
+
+    /**
+     * Get the value of length
      *
      * @return  float
      */ 
-    public function getWeight()
+    public function getLength()
     {
-        return $this->weight;
+        return $this->length;
     }
 
     /**
-     * Set the value of weight
+     * Set the value of length
      *
-     * @param  float  $weight
+     * @param  float  $length
      */ 
-    public function setWeight(float $weight = null)
+    public function setLength(float $length = null)
     {
-        $this->weight = $weight;
+        $this->length = $length;
     }
 
     /**
-     * Get the value of commodity_code
+     * Get the value of width
      *
-     * @return  string
+     * @return  float
      */ 
-    public function getCommodityCode()
+    public function getWidth()
     {
-        return $this->commodity_code;
+        return $this->width;
     }
 
     /**
-     * Set the value of commodity_code
+     * Set the value of width
      *
-     * @param  string  $commodity_code
+     * @param  float  $width
      */ 
-    public function setCommodityCode(string $commodity_code = null)
+    public function setWidth(float $width = null)
     {
-        $this->commodity_code = $commodity_code;
+        $this->width = $width;
     }
 
     /**
-     * Get the value of commodity_description
+     * Get the value of height
      *
-     * @return  string
+     * @return  float
      */ 
-    public function getCommodityDescription()
+    public function getHeight()
     {
-        return $this->commodity_description;
+        return $this->height;
     }
 
     /**
-     * Set the value of commodity_description
+     * Set the value of height
      *
-     * @param  string  $commodity_description
-     *
-     * @return  self
+     * @param  float  $height
      */ 
-    public function setCommodityDescription(string $commodity_description = null)
+    public function setHeight(float $height = null)
     {
-        $this->commodity_description = $commodity_description;
-    }
-
-    /**
-     * Get the value of commodity_manucountry
-     *
-     * @return  string
-     */ 
-    public function getCommodityManucountry()
-    {
-        return $this->commodity_manucountry;
-    }
-
-    /**
-     * Set the value of commodity_manucountry
-     *
-     * @param  string  $commodity_manucountry
-     *
-     * @return  self
-     */ 
-    public function setCommodityManucountry(string $commodity_manucountry = null)
-    {
-        $this->commodity_manucountry = $commodity_manucountry;
+        $this->height = $height;
     }
 }

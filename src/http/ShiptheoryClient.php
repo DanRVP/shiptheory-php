@@ -54,6 +54,8 @@ class ShiptheoryClient
 
     /**
      * Checks to see if a token exists or has expired. If it has, then fetch a new one. 
+     * 
+     * @return bool
      */
     public function validateToken()
     {
@@ -66,6 +68,9 @@ class ShiptheoryClient
 
     /**
      * Check to see if a token has expired beyond its 60 min lifetime.
+     * 
+     * @param AccessToken $token The token to check.
+     * @return bool
      */
     private function checkTokenLifeExpired($token)
     {
@@ -115,6 +120,7 @@ class ShiptheoryClient
      * Calls the shipment/list API endpoint and returns a result.
      * 
      * @param string $query_params URL query params to filter by.
+     * @return Response
      */
     public function listShipment(string $query_params)
     {
@@ -130,6 +136,7 @@ class ShiptheoryClient
      * Calls the shipment/search API endpoint and returns a result.
      * 
      * @param string $query_params URL query params to filter by.
+     * @return Response
      */
     public function searchShipment(string $query_params)
     {
@@ -139,5 +146,98 @@ class ShiptheoryClient
 
         $api = new Api($this->token->getToken());
         return $api->get('shipments/search' . $query_params);
+    }
+
+    /**
+     * Create a new return label 
+     * 
+     * @param string $data json string of data.
+     * @return Response
+     */
+    public function createReturnLabel(string $data)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->post('returns', $data);
+    }
+
+    /**
+     * Get a list of outgoing delivery services.
+     * 
+     * @return Response
+     */
+    public function getOutgoingDeliveryServices()
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('services');
+    }
+
+    /**
+     * Get a list of incoming delivery services.
+     * 
+     * @return Response
+     */
+    public function getIncomingDeliveryServices()
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('services/incoming');
+    }
+
+    /**
+     * Get a list of package sizes.
+     * 
+     * @return Response
+     */
+    public function getPackageSizes(string $query_params)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('packages/sizes' . $query_params);
+    }
+
+    /**
+     * Add a new product. Products with SKUs already in ST will be updated.
+     * 
+     * @param string $data json string of data.
+     * @return Response
+     */
+    public function addProduct(string $data)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->post('products', $data);
+    }
+
+    /**
+     * View a product from your product catalouge.
+     * 
+     * @param string $sku The unique product SKU. 
+     * @return Response
+     */
+    public function viewProduct(string $sku)
+    {
+        if (!$this->validateToken()) {
+            return false;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->get('products/' . $sku);
     }
 }
