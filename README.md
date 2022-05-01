@@ -2,7 +2,7 @@
 
 API client to communicate with the Shiptheory API.
 
-The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all enndpoints, then look in `src/Http/ShiptheoryClient.php`.
+The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all endpoint methods, then look in `src/Http/ShiptheoryClient.php`.
 
 ## Installation
 Require with composer:
