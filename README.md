@@ -76,6 +76,7 @@ $reciever->setCountry('GB');
 $reciever->setPostcode('BS4 3EH');
 $reciever->setEmail('recipient@test.com');
 $reciever->setTelephone('01234567890');
+$reciever->setWhat3Words('///what.three.words');
 $eori = new TaxNumber('GB205672212000', AddressTaxNumberTypes::EORI);
 $vat = new TaxNumber('GB123456789', AddressTaxNumberTypes::VAT);
 $reciever->setTaxNumbers([$eori, $vat]);
