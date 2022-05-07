@@ -8,6 +8,7 @@ use Shiptheory\Objects\ListShipmentQuery;
 use Shiptheory\Objects\PackageQuery;
 use Shiptheory\Objects\Product;
 use Shiptheory\Objects\ProductQuery;
+use Shiptheory\Objects\ProductSortParameters;
 use Shiptheory\Objects\Recipient;
 use Shiptheory\Objects\ReturnLabel;
 use Shiptheory\Objects\SearchShipmentQuery;
@@ -161,7 +162,7 @@ var_dump($client->updateProduct('API-Product-1', $data));
 
 // List products
 $product_fields = [
-    'weight' => 1.5,
+    'sort' => ProductSortParameters::PRICE,
     'limit' => 25
 ];
 

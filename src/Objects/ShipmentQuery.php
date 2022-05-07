@@ -9,7 +9,6 @@ class ShipmentQuery implements QueryInterface
 {
     use QueryTrait;
 
-    protected $fields = [];
     protected $valid_fields = [
         'limit',
         'status',

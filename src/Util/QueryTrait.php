@@ -4,6 +4,11 @@ namespace Shiptheory\Util;
 
 trait QueryTrait
 {
+    /**
+     * @var array
+     */
+    protected $fields = [];
+
     public function __construct(array $fields)
     {
         $this->setFields($fields);
@@ -17,6 +22,10 @@ trait QueryTrait
      */
     public function toQueryParams(bool $strict = true)
     {
+        if (empty($this->fields)) {
+            return '';
+        }
+
         $fields = $this->fields;
         if ($strict) {
             $fields = array_filter($fields, function ($value, $key) {
@@ -44,7 +53,6 @@ trait QueryTrait
      * Adds extra fields to the current field list.
      * 
      * @param array $fields Fields to add.
-     * @return void
      */
     public function addFields(array $fields) {
         $this->fields = array_merge($this->fields, $fields);
@@ -54,7 +62,6 @@ trait QueryTrait
      * Adds extra fields to the valid fields list.
      * 
      * @param array $fields Fields to add.
-     * @return void
      */
     protected function addExtraValidFields(array $fields)
     {
@@ -72,9 +79,9 @@ trait QueryTrait
     /**
      * Set the value of fields
      *
-     * @return  self
+     * @param array
      */ 
-    public function setFields($fields = [])
+    public function setFields(array $fields = [])
     {
         $this->fields = $fields;
     }
