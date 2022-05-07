@@ -1,6 +1,8 @@
 # Shiptheory PHP API Client
 
-API client to communicate with the Shiptheory API
+API client to communicate with the Shiptheory API.
+
+The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all endpoint methods, then look in `src/Http/ShiptheoryClient.php`.
 
 ## Installation
 Require with composer:
@@ -108,6 +110,6 @@ $shipment->setSender($sender);
 $shipment->setProducts([$product]);
 
 // Send shipment to Shiptheory
-$data = $shipment->toArray(true);
-$result = $client->bookShipment(json_encode($data));
+$data = $shipment->toJson(true);
+$result = $client->bookShipment($data);
 ```
