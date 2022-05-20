@@ -25,7 +25,7 @@ class Shipment implements ObjectInterface
     protected $delivery_service;
     
     /**
-     * @var string
+     * @var int
      */
     protected $increment;
 
@@ -117,7 +117,7 @@ class Shipment implements ObjectInterface
     /**
      * Get the value of increment
      *
-     * @return  string
+     * @return  int
      */ 
     public function getIncrement()
     {
@@ -129,7 +129,7 @@ class Shipment implements ObjectInterface
      *
      * @param  string  $increment
      */ 
-    public function setIncrement(string $increment = null)
+    public function setIncrement(int $increment = null)
     {
         $this->increment = $increment;
     }

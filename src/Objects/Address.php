@@ -47,6 +47,11 @@ class Address implements ObjectInterface
     /**
      * @var string
      */
+    protected $county;
+
+    /**
+     * @var string
+     */
     protected $country;
 
     /**
@@ -333,5 +338,25 @@ class Address implements ObjectInterface
     public function setTax_number(string $tax_number = null)
     {
         $this->tax_number = $tax_number;
+    }
+
+    /**
+     * Get the value of county
+     *
+     * @return  string
+     */ 
+    public function getCounty()
+    {
+        return $this->county;
+    }
+
+    /**
+     * Set the value of county
+     *
+     * @param  string  $county
+     */ 
+    public function setCounty(string $county)
+    {
+        $this->county = $county;
     }
 }
