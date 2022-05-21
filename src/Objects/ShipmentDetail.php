@@ -65,7 +65,7 @@ class ShipmentDetail implements ObjectInterface
     protected $sales_source;
 
     /**
-     * @var \DateTime
+     * @var string
      */
     protected $ship_date;
 
@@ -303,7 +303,7 @@ class ShipmentDetail implements ObjectInterface
     /**
      * Get the value of ship_date
      *
-     * @return  \DateTime
+     * @return string
      */ 
     public function getShipDate()
     {
