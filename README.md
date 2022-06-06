@@ -1,4 +1,4 @@
-# Shiptheory PHP API Client
+# Shiptheory Python API Client
 
 API client to communicate with the Shiptheory API.
 
