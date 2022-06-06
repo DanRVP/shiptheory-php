@@ -33,13 +33,14 @@ trait QueryTrait
             }, ARRAY_FILTER_USE_BOTH);
         }
 
-        return $this->buildQuery($fields);
+        return '?' . http_build_query($fields);
     }
 
     /**
      * Builds a query params string which does not follow RFC1738 or RFC3986 encoding
      * so spaces appear as spaces. 
      * 
+     * @deprecated 
      * @param array $fields
      * @return string
      */
