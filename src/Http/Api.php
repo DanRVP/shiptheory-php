@@ -16,28 +16,11 @@ class Api
      * Perfoms a GET request using CURL.
      *
      * @param string $endpoint Endpoint to poll.
-     * @throws \Exception
-     * @return object|string
+     * @return Response|Error
      */
     public function get($endpoint)
     {
-        $response = new Response();
-        $curl = $this->makeCurl($endpoint);
-
-        try {
-            $result = curl_exec($curl);
-        } catch (\Exception $e) {
-            return $response->setError('Error: ' . $e->getMessage());
-        }
-
-        $info = curl_getinfo($curl);
-        curl_close($curl);
-
-        $response->setBody($result);
-        $response->setCode($info['http_code']);
-        $response->setUrl($info['url']);
-
-        return $response;
+        return $this->makeRequest($endpoint);
     }
 
     /**
@@ -45,30 +28,11 @@ class Api
      *
      * @param string $endpoint Endpoint to poll.
      * @param string $data Data to send.
-     * @throws \Exception
-     * @return Response
+     * @return Response|Error
      */
     public function post($endpoint, $data)
     {
-        $curl = $this->makeCurl($endpoint);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        $response = new Response();
-
-        try {
-            $result = curl_exec($curl);
-        } catch (\Exception $e) {
-            return $response->setError('Error: ' . $e->getMessage());
-        }
-
-        $info = curl_getinfo($curl);
-        curl_close($curl);
-
-        $response->setBody($result);
-        $response->setCode($info['http_code']);
-        $response->setUrl($info['url']);
-
-        return $response;
+        return $this->makeRequest($endpoint, 'POST', $data);
     }
 
      /**
@@ -76,30 +40,11 @@ class Api
      *
      * @param string $endpoint Endpoint to poll.
      * @param string $data Data to send.
-     * @throws \Exception
-     * @return Response
+     * @return Response|Error
      */
     public function put($endpoint, $data)
     {
-        $curl = $this->makeCurl($endpoint);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        $response = new Response();
-
-        try {
-            $result = curl_exec($curl);
-        } catch (\Exception $e) {
-            return $response->setError('Error: ' . $e->getMessage());
-        }
-
-        $info = curl_getinfo($curl);
-        curl_close($curl);
-
-        $response->setBody($result);
-        $response->setCode($info['http_code']);
-        $response->setUrl($info['url']);
-
-        return $response;
+        return $this->makeRequest($endpoint, 'PUT', $data);
     }
 
     /**
@@ -130,6 +75,51 @@ class Api
     }
 
     /**
+     * Make a HTTP request to the API.
+     * 
+     * @param string $endpoint Endpoint to poll.
+     * @param string $http_request_method The HTTP request method if not a GET request.
+     * @param string $data Data to send.
+     * @return Response|Error
+     */
+    protected function makeRequest($endpoint, $http_request_method = null, $data = null)
+    {
+        $curl = $this->makeCurl($endpoint);
+
+        if (!empty($http_request_method)) {
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $http_request_method);
+        }
+
+        // Use is_null instead of empty so empty strings can be passed
+        if (!is_null($data)) {
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        }
+
+        $result = curl_exec($curl);
+        if ($result === false) {
+            $error = new Error(curl_error($curl), curl_errno($curl));
+            curl_close($curl);
+            return $error;
+        }
+
+        $info = curl_getinfo($curl);
+        curl_close($curl);
+
+        $http_response_code = $info['http_code'];
+        if ($http_response_code != 200) {
+            $response_body = json_decode($result);
+            return new Error($response_body->message, $http_response_code);
+        }
+
+        $response = new Response();
+        $response->setBody($result);
+        $response->setCode($http_response_code);
+        $response->setUrl($info['url']);
+
+        return $response;
+    }
+
+    /**
      * Get the current API token
      */
     public function getApiToken()
@@ -139,6 +129,7 @@ class Api
 
     /**
      * Set the current API token
+     * @param string $token
      */
     public function setApiToken($token)
     {

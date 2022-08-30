@@ -17,11 +17,6 @@ class Response
     /**
      * @var string
      */
-    protected $error;
-
-    /**
-     * @var string
-     */
     protected $url;
 
     public function __construct($body = null, $code = null, $url = null)
@@ -73,28 +68,6 @@ class Response
     public function setCode(int $code = null)
     {
         $this->code = $code;
-    }
-
-    /**
-     * Get the value of error
-     *
-     * @return  string
-     */ 
-    public function getError()
-    {
-        return $this->error;
-    }
-
-    /**
-     * Set the value of error
-     *
-     * @param  string  $error
-     *
-     * @return  self
-     */ 
-    public function setError(string $error)
-    {
-        $this->error = $error;
     }
 
     /**
