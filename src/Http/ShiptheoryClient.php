@@ -3,7 +3,6 @@
 namespace Shiptheory\Http;
 
 use DateTime;
-use Shiptheory\Http\AccessToken;
 
 class ShiptheoryClient
 {
@@ -18,7 +17,7 @@ class ShiptheoryClient
     protected $username;
 
     /**
-     * @var
+     * @var string
      */
     protected $password;
 
@@ -29,11 +28,30 @@ class ShiptheoryClient
     }
 
     /**
+     * Make a request to the Shiptheory API.
+     * 
+     * @param $method HTTP method
+     * @param $endpoint The endpoint to query
+     * @param $data (optional) Required for post and put requests.
+     * @return Response|Error
+     */
+    protected function makeShiptheoryApiRequest($method, $endpoint, $data = null)
+    {
+        $is_valid_token = $this->validateToken();
+        if ($is_valid_token instanceof Error) {
+            return $is_valid_token;
+        }
+
+        $api = new Api($this->token->getToken());
+        return $api->{strtolower($method)}($endpoint, $data);
+    }
+
+    /**
      * Get a new access token and save it into memory. 
      * 
-     * @return bool
+     * @return bool|Error true on success and an Error object on failure.
      */
-    public function getAccessToken()
+    protected function getAccessToken()
     {
         $data = [
             'email' => $this->username,
@@ -43,21 +61,21 @@ class ShiptheoryClient
         $api = new Api();
         $response = $api->post('token', json_encode($data));
 
-        if ($response->getCode() == 200) {
+        if ($response instanceof Response) {
             $token = json_decode($response->getBody())->data->token;
             $this->token = new AccessToken($token, new DateTime());
             return true;
         }
 
-        return false;
+        return $response;
     }
 
     /**
      * Checks to see if a token exists or has expired. If it has, then fetch a new one. 
      * 
-     * @return bool
+     * @return bool|Error true on success and an Error object on failure.
      */
-    public function validateToken()
+    protected function validateToken()
     {
         if (empty($this->token) || $this->checkTokenLifeExpired($this->token)) {
             return $this->getAccessToken($this->username, $this->password);
@@ -72,7 +90,7 @@ class ShiptheoryClient
      * @param AccessToken $token The token to check.
      * @return bool
      */
-    private function checkTokenLifeExpired($token)
+    protected function checkTokenLifeExpired($token)
     {
         $diff = $token->getAge()->diff(new DateTime());
         $minutes = 0;
@@ -88,188 +106,128 @@ class ShiptheoryClient
      * Book in a shipment with Shiptheory
      * 
      * @param string $data json string of data.
-     * @return Response
+     * @return Response|Error
      */
     public function bookShipment(string $data)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->post('shipments', $data);
+        return $this->makeShiptheoryApiRequest('post', 'shipments', $data);
     }
 
     /**
      * View a shipment 
      * 
      * @param string $reference The unique reference used when creating the shipment.
-     * @return Response
+     * @return Response|Error
      */
     public function viewShipment(string $reference) 
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('shipments/' . $reference);
+        return $this->makeShiptheoryApiRequest('get', 'shipments/' . $reference);
     }
 
     /**
      * Calls the shipment/list API endpoint and returns a result.
      * 
      * @param string $query_params URL query params to filter by.
-     * @return Response
+     * @return Response|Error
      */
     public function listShipment(string $query_params)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('shipments/list' . $query_params);
+        return $this->makeShiptheoryApiRequest('get', 'shipments/list' . $query_params);
     }
 
     /**
      * Calls the shipment/search API endpoint and returns a result.
      * 
      * @param string $query_params URL query params to filter by.
-     * @return Response
+     * @return Response|Error
      */
     public function searchShipment(string $query_params)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('shipments/search' . $query_params);
+        return $this->makeShiptheoryApiRequest('get', 'shipments/search' . $query_params);
     }
 
     /**
      * Create a new return label 
      * 
      * @param string $data json string of data.
-     * @return Response
+     * @return Response|Error
      */
     public function createReturnLabel(string $data)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->post('returns', $data);
+        return $this->makeShiptheoryApiRequest('post', 'returns', $data);
     }
 
     /**
      * Get a list of outgoing delivery services.
      * 
-     * @return Response
+     * @return Response|Error
      */
     public function getOutgoingDeliveryServices()
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('services');
+        return $this->makeShiptheoryApiRequest('get', 'services');
     }
 
     /**
      * Get a list of incoming delivery services.
      * 
-     * @return Response
+     * @return Response|Error
      */
     public function getIncomingDeliveryServices()
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('services/incoming');
+        return $this->makeShiptheoryApiRequest('get', 'services/incoming');
     }
 
     /**
      * Get a list of package sizes.
      * 
-     * @return Response
+     * @return Response|Error
      */
     public function getPackageSizes(string $query_params)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('packages/sizes' . $query_params);
+        return $this->makeShiptheoryApiRequest('get', 'packages/sizes' . $query_params);
     }
 
     /**
      * Add a new product.
      * 
      * @param string $data json string of data.
-     * @return Response
+     * @return Response|Error
      */
     public function addProduct(string $data)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->post('products', $data);
+        return $this->makeShiptheoryApiRequest('post', 'products', $data);
     }
 
     /**
      * Update a product.
      * 
      * @param string $data json string of data.
-     * @return Response
+     * @return Response|Error
      */
     public function updateProduct(string $sku, string $data)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->put('products/update/' . $sku, $data);
+        return $this->makeShiptheoryApiRequest('put', 'products/update/' . $sku, $data);
     }
 
     /**
      * View a product from your product catalouge.
      * 
      * @param string $sku The unique product SKU. 
-     * @return Response
+     * @return Response|Error
      */
     public function viewProduct(string $sku)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('products/view/' . $sku);
+        return $this->makeShiptheoryApiRequest('get', 'products/view/' . $sku);
     }
 
     /**
      * View a list of products from your product catalouge.
      * 
      * @param string $sku The unique product SKU. 
-     * @return Response
+     * @return Response|Error
      */
     public function listProducts(string $query_params)
     {
-        if (!$this->validateToken()) {
-            return false;
-        }
-
-        $api = new Api($this->token->getToken());
-        return $api->get('products' . $query_params);
+        return $this->makeShiptheoryApiRequest('get', 'products' . $query_params);
     }
 }
