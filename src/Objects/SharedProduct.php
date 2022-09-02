@@ -59,7 +59,7 @@ class SharedProduct implements ObjectInterface
      *
      * @param  string  $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -79,7 +79,7 @@ class SharedProduct implements ObjectInterface
      *
      * @param  string  $sku
      */
-    public function setSku(string $sku)
+    public function setSku($sku)
     {
         $this->sku = $sku;
     }
