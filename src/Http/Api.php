@@ -111,7 +111,7 @@ class Api
         $info = curl_getinfo($curl);
         $http_response_code = $info['http_code'];
 
-        $this->logger->log(json_encode($info, strtoupper($http_request_method) . "- $endpoint"));
+        $this->logger->log(json_encode($info), strtoupper($http_request_method) . "- $endpoint");
 
         if ($result === false) {
             $error = new Error(curl_error($curl), $http_response_code);
