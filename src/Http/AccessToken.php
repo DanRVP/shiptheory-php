@@ -37,7 +37,7 @@ class AccessToken
      *
      * @return  self
      */
-    public function setToken(string $token)
+    public function setToken($token)
     {
         $this->token = $token;
     }
@@ -59,7 +59,7 @@ class AccessToken
      *
      * @return  self
      */
-    public function setAge(\DateTime $age)
+    public function setAge($age)
     {
         $this->age = $age;
     }

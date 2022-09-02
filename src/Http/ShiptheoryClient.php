@@ -108,7 +108,7 @@ class ShiptheoryClient
      * @param string $data json string of data.
      * @return Response|Error
      */
-    public function bookShipment(string $data)
+    public function bookShipment($data)
     {
         return $this->makeShiptheoryApiRequest('post', 'shipments', $data);
     }
@@ -119,7 +119,7 @@ class ShiptheoryClient
      * @param string $reference The unique reference used when creating the shipment.
      * @return Response|Error
      */
-    public function viewShipment(string $reference)
+    public function viewShipment($reference)
     {
         return $this->makeShiptheoryApiRequest('get', 'shipments/' . $reference);
     }
@@ -130,7 +130,7 @@ class ShiptheoryClient
      * @param string $query_params URL query params to filter by.
      * @return Response|Error
      */
-    public function listShipment(string $query_params)
+    public function listShipment($query_params)
     {
         return $this->makeShiptheoryApiRequest('get', 'shipments/list' . $query_params);
     }
@@ -141,7 +141,7 @@ class ShiptheoryClient
      * @param string $query_params URL query params to filter by.
      * @return Response|Error
      */
-    public function searchShipment(string $query_params)
+    public function searchShipment($query_params)
     {
         return $this->makeShiptheoryApiRequest('get', 'shipments/search' . $query_params);
     }
@@ -152,7 +152,7 @@ class ShiptheoryClient
      * @param string $data json string of data.
      * @return Response|Error
      */
-    public function createReturnLabel(string $data)
+    public function createReturnLabel($data)
     {
         return $this->makeShiptheoryApiRequest('post', 'returns', $data);
     }
@@ -182,7 +182,7 @@ class ShiptheoryClient
      *
      * @return Response|Error
      */
-    public function getPackageSizes(string $query_params)
+    public function getPackageSizes($query_params)
     {
         return $this->makeShiptheoryApiRequest('get', 'packages/sizes' . $query_params);
     }
@@ -193,7 +193,7 @@ class ShiptheoryClient
      * @param string $data json string of data.
      * @return Response|Error
      */
-    public function addProduct(string $data)
+    public function addProduct($data)
     {
         return $this->makeShiptheoryApiRequest('post', 'products', $data);
     }
@@ -204,7 +204,7 @@ class ShiptheoryClient
      * @param string $data json string of data.
      * @return Response|Error
      */
-    public function updateProduct(string $sku, string $data)
+    public function updateProduct($sku, $data)
     {
         return $this->makeShiptheoryApiRequest('put', 'products/update/' . $sku, $data);
     }
@@ -215,7 +215,7 @@ class ShiptheoryClient
      * @param string $sku The unique product SKU.
      * @return Response|Error
      */
-    public function viewProduct(string $sku)
+    public function viewProduct($sku)
     {
         return $this->makeShiptheoryApiRequest('get', 'products/view/' . $sku);
     }
@@ -226,7 +226,7 @@ class ShiptheoryClient
      * @param string $sku The unique product SKU.
      * @return Response|Error
      */
-    public function listProducts(string $query_params)
+    public function listProducts($query_params)
     {
         return $this->makeShiptheoryApiRequest('get', 'products' . $query_params);
     }

@@ -37,7 +37,7 @@ class Error
      *
      * @return  self
      */
-    public function setCode(int $code = null)
+    public function setCode($code = null)
     {
         $this->code = $code;
     }
@@ -59,7 +59,7 @@ class Error
      *
      * @return  self
      */
-    public function setMessage(string $message)
+    public function setMessage($message)
     {
         $this->message = $message;
     }

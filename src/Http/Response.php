@@ -43,7 +43,7 @@ class Response
      *
      * @return  self
      */
-    public function setBody(string $body = null)
+    public function setBody($body = null)
     {
         $this->body = $body;
     }
@@ -65,7 +65,7 @@ class Response
      *
      * @return  self
      */
-    public function setCode(int $code = null)
+    public function setCode($code = null)
     {
         $this->code = $code;
     }
@@ -85,7 +85,7 @@ class Response
      *
      * @param  string  $url
      */
-    public function setUrl(string $url = null)
+    public function setUrl($url = null)
     {
         $this->url = $url;
     }
