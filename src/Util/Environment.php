@@ -11,7 +11,7 @@ class Environment
      */
     public static function loadFromEnvFile()
     {
-        $env_contents = file_get_contents(__DIR__ . '../../.env');
+        $env_contents = file_get_contents(__DIR__ . '/../../.env');
         if (!$env_contents) {
             return;
         }
@@ -30,6 +30,22 @@ class Environment
      */
     public static function loadEnvVariable($name)
     {
-        return getenv(self::VARIABLE_PREFIX . $name);
+        $value = getenv(self::VARIABLE_PREFIX . $name);
+        switch ($value) {
+            case 'null':
+                return null;
+            case 'false':
+                return false;
+            case 'true':
+                return true;
+            case is_numeric($value):
+                if (strpos($value, '.') !== false) {
+                    return (float) $value;
+                } else {
+                    return (int) $value;
+                }
+            default:
+                return $value;
+        }
     }
 }
