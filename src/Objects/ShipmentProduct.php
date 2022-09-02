@@ -2,13 +2,8 @@
 
 namespace Shiptheory\Objects;
 
-use Shiptheory\Util\ObjectTrait;
-use Shiptheory\Util\ObjectInterface;
-
 class ShipmentProduct extends SharedProduct
 {
-    use ObjectTrait;
-
     /**
      * @var float
      */
@@ -29,7 +24,7 @@ class ShipmentProduct extends SharedProduct
      *
      * @param  float  $value
      */
-    public function setValue(float $value = null)
+    public function setValue($value = null)
     {
         $this->value = $value;
     }

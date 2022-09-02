@@ -46,7 +46,7 @@ class ReturnLabel implements ObjectInterface
      *
      * @return  self
      */
-    public function setOutgoingReference(string $outgoing_reference = null)
+    public function setOutgoingReference($outgoing_reference)
     {
         $this->outgoing_reference = $outgoing_reference;
     }
@@ -65,10 +65,8 @@ class ReturnLabel implements ObjectInterface
      * Set the value of delivery_postcode
      *
      * @param  string  $delivery_postcode
-     *
-     * @return  self
      */
-    public function setDeliveryPostcode(string $delivery_postcode = null)
+    public function setDeliveryPostcode($delivery_postcode)
     {
         $this->delivery_postcode = $delivery_postcode;
     }
@@ -87,10 +85,8 @@ class ReturnLabel implements ObjectInterface
      * Set the value of return_service
      *
      * @param  integer  $return_service
-     *
-     * @return  self
      */
-    public function setReturnService($return_service = null)
+    public function setReturnService($return_service)
     {
         $this->return_service = $return_service;
     }
@@ -109,10 +105,8 @@ class ReturnLabel implements ObjectInterface
      * Set the value of expiry
      *
      * @param  string  $expiry
-     *
-     * @return  self
      */
-    public function setExpiry(string $expiry = null)
+    public function setExpiry($expiry)
     {
         $this->expiry = $expiry;
     }

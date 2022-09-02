@@ -119,7 +119,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  float  $weight
      */
-    public function setWeight(float $weight)
+    public function setWeight($weight)
     {
         $this->weight = $weight;
     }
@@ -139,7 +139,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  float  $value
      */
-    public function setValue(float $value)
+    public function setValue($value)
     {
         $this->value = $value;
     }
@@ -159,7 +159,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  float  $shipping_price
      */
-    public function setShippingPrice(float $shipping_price)
+    public function setShippingPrice($shipping_price)
     {
         $this->shipping_price = $shipping_price;
     }
@@ -179,7 +179,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $reference3
      */
-    public function setReference3(string $reference3)
+    public function setReference3($reference3)
     {
         $this->reference3 = $reference3;
     }
@@ -219,7 +219,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $instructions
      */
-    public function setInstructions(string $instructions)
+    public function setInstructions($instructions)
     {
         $this->instructions = $instructions;
     }
@@ -239,7 +239,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $gift_message
      */
-    public function setGiftMessage(string $gift_message)
+    public function setGiftMessage($gift_message)
     {
         $this->gift_message = $gift_message;
     }
@@ -275,7 +275,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $currency_code
      */
-    public function setCurrencyCode(string $currency_code)
+    public function setCurrencyCode($currency_code)
     {
         $this->currency_code = $currency_code;
     }
@@ -295,7 +295,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $sales_source
      */
-    public function setSalesSource(string $sales_source)
+    public function setSalesSource($sales_source)
     {
         $this->sales_source = $sales_source;
     }
@@ -315,7 +315,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $ship_date
      */
-    public function setShipDate(string $ship_date)
+    public function setShipDate($ship_date)
     {
         $this->ship_date = $ship_date;
     }
@@ -335,7 +335,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $rules_metadata
      */
-    public function setRulesMetadata(string $rules_metadata)
+    public function setRulesMetadata($rules_metadata)
     {
         $this->rules_metadata = $rules_metadata;
     }
@@ -355,7 +355,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $duty_tax_number
      */
-    public function setDutyTaxNumber(string $duty_tax_number)
+    public function setDutyTaxNumber($duty_tax_number)
     {
         $this->duty_tax_number = $duty_tax_number;
     }
@@ -375,7 +375,7 @@ class ShipmentDetail implements ObjectInterface
      *
      * @param  string  $duty_tax_number_type  Enum of TaxNumberTypes::TYPES
      */
-    public function setDutyTaxNumberType(string $duty_tax_number_type)
+    public function setDutyTaxNumberType($duty_tax_number_type)
     {
         $this->duty_tax_number_type = $duty_tax_number_type;
     }

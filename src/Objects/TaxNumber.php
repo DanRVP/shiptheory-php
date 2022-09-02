@@ -40,7 +40,7 @@ class TaxNumber implements ObjectInterface
      *
      * @param  string  $tax_number
      */
-    public function setTaxNumber(string $tax_number)
+    public function setTaxNumber($tax_number)
     {
         $this->tax_number = $tax_number;
     }
@@ -60,7 +60,7 @@ class TaxNumber implements ObjectInterface
      *
      * @param  string  $tax_number_type  Enum of AddressTaxNumberTypes::TYPES
      */
-    public function setTaxNumberType(string $tax_number_type)
+    public function setTaxNumberType($tax_number_type)
     {
         $this->tax_number_type = $tax_number_type;
     }

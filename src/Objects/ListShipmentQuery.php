@@ -9,7 +9,7 @@ class ListShipmentQuery extends ShipmentQuery
         'modified'
     ];
 
-    public function __construct(array $fields)
+    public function __construct($fields)
     {
         parent::__construct($fields);
         $this->addExtraValidFields(self::EXTRA_VALID_FIELDS);

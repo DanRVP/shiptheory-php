@@ -2,13 +2,8 @@
 
 namespace Shiptheory\Objects;
 
-use Shiptheory\Util\ObjectTrait;
-use Shiptheory\Util\ObjectInterface;
-
-class Recipient extends Address implements ObjectInterface
+class Recipient extends Address
 {
-    use ObjectTrait;
-
     /**
      * @var TaxNumber[]
      */
@@ -34,15 +29,17 @@ class Recipient extends Address implements ObjectInterface
      *
      * @param  TaxNumber[]  $tax_numbers
      */
-    public function setTaxNumbers(array $tax_numbers = null)
+    public function setTaxNumbers($tax_numbers = [])
     {
         $this->tax_numbers = $tax_numbers;
     }
 
     /**
      * Add a new Tax number to the array
+     *
+     * @param TaxNumber $tax_number
      */
-    public function addTaxNumber(TaxNumber $tax_number)
+    public function addTaxNumber($tax_number)
     {
         $this->tax_numbers[] = $tax_number;
     }
@@ -62,7 +59,7 @@ class Recipient extends Address implements ObjectInterface
      *
      * @param  string  $what3words
      */
-    public function setWhat3Words(string $what3words)
+    public function setWhat3Words($what3words)
     {
         $this->what3words = $what3words;
     }

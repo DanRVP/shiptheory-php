@@ -10,7 +10,7 @@ class SearchShipmentQuery extends ShipmentQuery
         'created_to',
     ];
 
-    public function __construct(array $fields)
+    public function __construct($fields)
     {
         parent::__construct($fields);
         $this->addExtraValidFields(self::EXTRA_VALID_FIELDS);

@@ -2,13 +2,9 @@
 
 namespace Shiptheory\Objects;
 
-use Shiptheory\Util\ObjectTrait;
-use Shiptheory\Util\ObjectInterface;
 
 class Product extends SharedProduct
 {
-    use ObjectTrait;
-
     /**
      * @var float
      */
@@ -54,7 +50,7 @@ class Product extends SharedProduct
      *
      * @param  float  $price
      */
-    public function setPrice(float $price = null)
+    public function setPrice($price)
     {
         $this->price = $price;
     }
@@ -74,7 +70,7 @@ class Product extends SharedProduct
      *
      * @param  string  $barcode
      */
-    public function setBarcode(string $barcode = null)
+    public function setBarcode($barcode)
     {
         $this->barcode = $barcode;
     }
@@ -94,7 +90,7 @@ class Product extends SharedProduct
      *
      * @param  string  $commodity_composition
      */
-    public function setCommodityComposition(string $commodity_composition = null)
+    public function setCommodityComposition($commodity_composition)
     {
         $this->commodity_composition = $commodity_composition;
     }
@@ -114,7 +110,7 @@ class Product extends SharedProduct
      *
      * @param  float  $length
      */
-    public function setLength(float $length = null)
+    public function setLength($length)
     {
         $this->length = $length;
     }
@@ -134,7 +130,7 @@ class Product extends SharedProduct
      *
      * @param  float  $width
      */
-    public function setWidth(float $width = null)
+    public function setWidth($width)
     {
         $this->width = $width;
     }
@@ -154,7 +150,7 @@ class Product extends SharedProduct
      *
      * @param  float  $height
      */
-    public function setHeight(float $height = null)
+    public function setHeight($height)
     {
         $this->height = $height;
     }

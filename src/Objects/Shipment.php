@@ -69,7 +69,7 @@ class Shipment implements ObjectInterface
      *
      * @param  string  $reference2
      */
-    public function setReference2(string $reference2 = null)
+    public function setReference2($reference2)
     {
         $this->reference2 = $reference2;
     }
@@ -89,7 +89,7 @@ class Shipment implements ObjectInterface
      *
      * @param  string  $reference
      */
-    public function setReference(string $reference = null)
+    public function setReference($reference)
     {
         $this->reference = $reference;
     }
@@ -109,7 +109,7 @@ class Shipment implements ObjectInterface
      *
      * @param  string  $delivery_service
      */
-    public function setDeliveryService(string $delivery_service = null)
+    public function setDeliveryService($delivery_service)
     {
         $this->delivery_service = $delivery_service;
     }
@@ -129,7 +129,7 @@ class Shipment implements ObjectInterface
      *
      * @param  string  $increment
      */
-    public function setIncrement(int $increment = null)
+    public function setIncrement($increment)
     {
         $this->increment = $increment;
     }
@@ -149,7 +149,7 @@ class Shipment implements ObjectInterface
      *
      * @param  ShipmentDetail  $shipment_detail
      */
-    public function setShipmentDetail(ShipmentDetail $shipment_detail = null)
+    public function setShipmentDetail($shipment_detail)
     {
         $this->shipment_detail = $shipment_detail;
     }
@@ -169,7 +169,7 @@ class Shipment implements ObjectInterface
      *
      * @param  Recipient  $recipient
      */
-    public function setRecipient(Recipient $recipient = null)
+    public function setRecipient($recipient)
     {
         $this->recipient = $recipient;
     }
@@ -189,7 +189,7 @@ class Shipment implements ObjectInterface
      *
      * @param  Sender  $sender
      */
-    public function setSender(Sender $sender = null)
+    public function setSender($sender)
     {
         $this->sender = $sender;
     }
@@ -209,7 +209,7 @@ class Shipment implements ObjectInterface
      *
      * @param  array  $products
      */
-    public function setProducts(array $products = null)
+    public function setProducts($products)
     {
         $this->products = $products;
     }
@@ -229,7 +229,7 @@ class Shipment implements ObjectInterface
      *
      * @param  array  $packages
      */
-    public function setPackages(array $packages = null)
+    public function setPackages($packages)
     {
         $this->packages = $packages;
     }
