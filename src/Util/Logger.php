@@ -6,7 +6,7 @@ use DateTime;
 
 class Logger
 {
-    const DEFAULT_LOG_PATH = __DIR__ . '/../Logs/';
+    const DEFAULT_LOG_PATH = __DIR__ . '/../../logs/';
 
     /**
      * @var string
