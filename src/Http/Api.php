@@ -2,14 +2,26 @@
 
 namespace Shiptheory\Http;
 
+use Shiptheory\Util\Logger;
+
 class Api
 {
-    protected $api_token = null;
     const BASE_URL = 'https://api.shiptheory.com/v1/';
+
+    /**
+     * @var string
+     */
+    protected $api_token;
+
+    /**
+     * @var Logger
+     */
+    protected $logger;
 
     public function __construct($api_token = null)
     {
         $this->api_token = $api_token;
+        $this->logger = new Logger();
     }
 
     /**
@@ -96,14 +108,14 @@ class Api
         }
 
         $result = curl_exec($curl);
+        $info = curl_getinfo($curl);
+        $this->logger->log(json_encode($info, strtoupper($http_request_method) . "- $endpoint"));
+
         if ($result === false) {
             $error = new Error(curl_error($curl), curl_errno($curl));
             curl_close($curl);
             return $error;
         }
-
-        $info = curl_getinfo($curl);
-        curl_close($curl);
 
         $http_response_code = $info['http_code'];
         if ($http_response_code != 200) {
@@ -115,6 +127,8 @@ class Api
         $response->setBody($result);
         $response->setCode($http_response_code);
         $response->setUrl($info['url']);
+
+        curl_close($curl);
 
         return $response;
     }
