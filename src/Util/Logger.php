@@ -6,7 +6,7 @@ use DateTime;
 
 class Logger
 {
-    const DEFAULT_LOG_PATH = '../Logs/';
+    const DEFAULT_LOG_PATH = __DIR__ . '/../Logs/';
 
     /**
      * @var string
@@ -33,7 +33,7 @@ class Logger
     public function log($message, $title = 'Info')
     {
         $log = $this->getLogTimeStamp() . " $title: $message\n\n";
-        file_put_contents($this->path . $this->getLogName(), $log, FILE_APPEND);
+        file_put_contents($this->log_path . $this->getLogName(), $log, FILE_APPEND);
     }
 
     /**
