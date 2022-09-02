@@ -5,7 +5,7 @@ namespace Shiptheory\Http;
 class Api
 {
     protected $api_token = null;
-    protected const BASE_URL = 'https://api.shiptheory.com/v1/';
+    const BASE_URL = 'https://api.shiptheory.com/v1/';
 
     public function __construct($api_token = null)
     {
@@ -76,7 +76,7 @@ class Api
 
     /**
      * Make a HTTP request to the API.
-     * 
+     *
      * @param string $endpoint Endpoint to poll.
      * @param string $http_request_method The HTTP request method if not a GET request.
      * @param string $data Data to send.

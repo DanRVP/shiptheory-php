@@ -8,7 +8,7 @@ use Shiptheory\Util\QueryTrait;
 class ProductQuery implements QueryInterface
 {
     use QueryTrait;
-    
+
     protected $valid_fields = [
         'limit',
         'sort',

@@ -5,9 +5,21 @@ namespace Shiptheory\Util;
 interface ObjectInterface
 {
     /**
-     * Convert nested objects to an array
+     * Converts deeply nested objects, which are instances
+     * of ObjectInterface, to an array.
+     *
+     * @return array
      */
-    public function toArray();
+    public function toArray($remove_null_fields = false);
+
+    /**
+     * Converts object to a json string.
+     *
+     * @param bool $remove_null_fields Remove all fields which evaluate as null.
+     * @param bool $pretty_print Pretty print the JSON output by the method.
+     * @return string
+     */
+    public function toJson($remove_null_fields = false, $pretty_print = false);
 
     /**
      * Removes a property from this object

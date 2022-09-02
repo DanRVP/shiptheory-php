@@ -10,7 +10,7 @@ class TaxNumber implements ObjectInterface
     use ObjectTrait;
 
     /**
-     * @var string 
+     * @var string
      */
     protected $tax_number;
 
@@ -29,7 +29,7 @@ class TaxNumber implements ObjectInterface
      * Get the value of tax_number
      *
      * @return  string
-     */ 
+     */
     public function getTaxNumber()
     {
         return $this->tax_number;
@@ -39,7 +39,7 @@ class TaxNumber implements ObjectInterface
      * Set the value of tax_number
      *
      * @param  string  $tax_number
-     */ 
+     */
     public function setTaxNumber(string $tax_number)
     {
         $this->tax_number = $tax_number;
@@ -49,7 +49,7 @@ class TaxNumber implements ObjectInterface
      * Get enum of AddressTaxNumberTypes::TYPES
      *
      * @return  string
-     */ 
+     */
     public function getTaxNumberType()
     {
         return $this->tax_number_type;
@@ -59,7 +59,7 @@ class TaxNumber implements ObjectInterface
      * Set enum of AddressTaxNumberTypes::TYPES
      *
      * @param  string  $tax_number_type  Enum of AddressTaxNumberTypes::TYPES
-     */ 
+     */
     public function setTaxNumberType(string $tax_number_type)
     {
         $this->tax_number_type = $tax_number_type;

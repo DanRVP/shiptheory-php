@@ -18,7 +18,7 @@ class ShipmentProduct extends SharedProduct
      * Get the value of value
      *
      * @return  float
-     */ 
+     */
     public function getValue()
     {
         return $this->value;
@@ -28,7 +28,7 @@ class ShipmentProduct extends SharedProduct
      * Set the value of value
      *
      * @param  float  $value
-     */ 
+     */
     public function setValue(float $value = null)
     {
         $this->value = $value;

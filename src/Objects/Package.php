@@ -23,7 +23,7 @@ class Package implements ObjectInterface
      * Get the value of id
      *
      * @return  integer
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -33,7 +33,7 @@ class Package implements ObjectInterface
      * Set the value of id
      *
      * @param  integer  $id
-     */ 
+     */
     public function setId($id = null)
     {
         $this->id = $id;
@@ -43,7 +43,7 @@ class Package implements ObjectInterface
      * Get the value of weight
      *
      * @return  float
-     */ 
+     */
     public function getWeight()
     {
         return $this->weight;
@@ -53,7 +53,7 @@ class Package implements ObjectInterface
      * Set the value of weight
      *
      * @param  float  $weight
-     */ 
+     */
     public function setWeight(float $weight = null)
     {
         $this->weight = $weight;

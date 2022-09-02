@@ -14,17 +14,17 @@ class Error
      */
     protected $code;
 
-    public function __construct($body = null, $code = null)
+    public function __construct($message = null, $code = null)
     {
         $this->setCode($code);
-        $this->setMessage($url);
+        $this->setMessage($message);
     }
 
     /**
      * Get the value of code
      *
      * @return  int
-     */ 
+     */
     public function getCode()
     {
         return $this->code;
@@ -36,7 +36,7 @@ class Error
      * @param  int  $code
      *
      * @return  self
-     */ 
+     */
     public function setCode(int $code = null)
     {
         $this->code = $code;
@@ -46,7 +46,7 @@ class Error
      * Get the value of message
      *
      * @return  string
-     */ 
+     */
     public function getMessage()
     {
         return $this->message;
@@ -58,7 +58,7 @@ class Error
      * @param  string  $message
      *
      * @return  self
-     */ 
+     */
     public function setMessage(string $message)
     {
         $this->message = $message;

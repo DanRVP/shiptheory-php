@@ -7,7 +7,7 @@ use Shiptheory\Util\ObjectInterface;
 trait ObjectTrait
 {
     /**
-     * Converts deeply nested objects, which are instances 
+     * Converts deeply nested objects, which are instances
      * of ObjectInterface, to an array.
      *
      * @return array
@@ -37,9 +37,11 @@ trait ObjectTrait
     /**
      * Converts object to a json string.
      *
+     * @param bool $remove_null_fields Remove all fields which evaluate as null.
+     * @param bool $pretty_print Pretty print the JSON output by the method.
      * @return string
      */
-    public function toJson(bool $remove_null_fields = false, bool $pretty_print = false)
+    public function toJson($remove_null_fields = false, $pretty_print = false)
     {
         $arrayed = $remove_null_fields ? $this->toArray(true) : $this->toArray();
         if ($pretty_print) {

@@ -29,7 +29,7 @@ class ShiptheoryClient
 
     /**
      * Make a request to the Shiptheory API.
-     * 
+     *
      * @param $method HTTP method
      * @param $endpoint The endpoint to query
      * @param $data (optional) Required for post and put requests.
@@ -47,8 +47,8 @@ class ShiptheoryClient
     }
 
     /**
-     * Get a new access token and save it into memory. 
-     * 
+     * Get a new access token and save it into memory.
+     *
      * @return bool|Error true on success and an Error object on failure.
      */
     protected function getAccessToken()
@@ -71,8 +71,8 @@ class ShiptheoryClient
     }
 
     /**
-     * Checks to see if a token exists or has expired. If it has, then fetch a new one. 
-     * 
+     * Checks to see if a token exists or has expired. If it has, then fetch a new one.
+     *
      * @return bool|Error true on success and an Error object on failure.
      */
     protected function validateToken()
@@ -86,7 +86,7 @@ class ShiptheoryClient
 
     /**
      * Check to see if a token has expired beyond its 60 min lifetime.
-     * 
+     *
      * @param AccessToken $token The token to check.
      * @return bool
      */
@@ -104,7 +104,7 @@ class ShiptheoryClient
 
     /**
      * Book in a shipment with Shiptheory
-     * 
+     *
      * @param string $data json string of data.
      * @return Response|Error
      */
@@ -114,19 +114,19 @@ class ShiptheoryClient
     }
 
     /**
-     * View a shipment 
-     * 
+     * View a shipment
+     *
      * @param string $reference The unique reference used when creating the shipment.
      * @return Response|Error
      */
-    public function viewShipment(string $reference) 
+    public function viewShipment(string $reference)
     {
         return $this->makeShiptheoryApiRequest('get', 'shipments/' . $reference);
     }
 
     /**
      * Calls the shipment/list API endpoint and returns a result.
-     * 
+     *
      * @param string $query_params URL query params to filter by.
      * @return Response|Error
      */
@@ -137,7 +137,7 @@ class ShiptheoryClient
 
     /**
      * Calls the shipment/search API endpoint and returns a result.
-     * 
+     *
      * @param string $query_params URL query params to filter by.
      * @return Response|Error
      */
@@ -147,8 +147,8 @@ class ShiptheoryClient
     }
 
     /**
-     * Create a new return label 
-     * 
+     * Create a new return label
+     *
      * @param string $data json string of data.
      * @return Response|Error
      */
@@ -159,7 +159,7 @@ class ShiptheoryClient
 
     /**
      * Get a list of outgoing delivery services.
-     * 
+     *
      * @return Response|Error
      */
     public function getOutgoingDeliveryServices()
@@ -169,7 +169,7 @@ class ShiptheoryClient
 
     /**
      * Get a list of incoming delivery services.
-     * 
+     *
      * @return Response|Error
      */
     public function getIncomingDeliveryServices()
@@ -179,7 +179,7 @@ class ShiptheoryClient
 
     /**
      * Get a list of package sizes.
-     * 
+     *
      * @return Response|Error
      */
     public function getPackageSizes(string $query_params)
@@ -189,7 +189,7 @@ class ShiptheoryClient
 
     /**
      * Add a new product.
-     * 
+     *
      * @param string $data json string of data.
      * @return Response|Error
      */
@@ -200,7 +200,7 @@ class ShiptheoryClient
 
     /**
      * Update a product.
-     * 
+     *
      * @param string $data json string of data.
      * @return Response|Error
      */
@@ -211,8 +211,8 @@ class ShiptheoryClient
 
     /**
      * View a product from your product catalouge.
-     * 
-     * @param string $sku The unique product SKU. 
+     *
+     * @param string $sku The unique product SKU.
      * @return Response|Error
      */
     public function viewProduct(string $sku)
@@ -222,8 +222,8 @@ class ShiptheoryClient
 
     /**
      * View a list of products from your product catalouge.
-     * 
-     * @param string $sku The unique product SKU. 
+     *
+     * @param string $sku The unique product SKU.
      * @return Response|Error
      */
     public function listProducts(string $query_params)

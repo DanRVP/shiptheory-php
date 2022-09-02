@@ -43,7 +43,7 @@ class Product extends SharedProduct
      * Get the value of price
      *
      * @return  float
-     */ 
+     */
     public function getPrice()
     {
         return $this->price;
@@ -53,7 +53,7 @@ class Product extends SharedProduct
      * Set the value of price
      *
      * @param  float  $price
-     */ 
+     */
     public function setPrice(float $price = null)
     {
         $this->price = $price;
@@ -63,7 +63,7 @@ class Product extends SharedProduct
      * Get the value of barcode
      *
      * @return  string
-     */ 
+     */
     public function getBarcode()
     {
         return $this->barcode;
@@ -73,7 +73,7 @@ class Product extends SharedProduct
      * Set the value of barcode
      *
      * @param  string  $barcode
-     */ 
+     */
     public function setBarcode(string $barcode = null)
     {
         $this->barcode = $barcode;
@@ -83,7 +83,7 @@ class Product extends SharedProduct
      * Get the value of commodity_composition
      *
      * @return  string
-     */ 
+     */
     public function getCommodityComposition()
     {
         return $this->commodity_composition;
@@ -93,7 +93,7 @@ class Product extends SharedProduct
      * Set the value of commodity_composition
      *
      * @param  string  $commodity_composition
-     */ 
+     */
     public function setCommodityComposition(string $commodity_composition = null)
     {
         $this->commodity_composition = $commodity_composition;
@@ -103,7 +103,7 @@ class Product extends SharedProduct
      * Get the value of length
      *
      * @return  float
-     */ 
+     */
     public function getLength()
     {
         return $this->length;
@@ -113,7 +113,7 @@ class Product extends SharedProduct
      * Set the value of length
      *
      * @param  float  $length
-     */ 
+     */
     public function setLength(float $length = null)
     {
         $this->length = $length;
@@ -123,7 +123,7 @@ class Product extends SharedProduct
      * Get the value of width
      *
      * @return  float
-     */ 
+     */
     public function getWidth()
     {
         return $this->width;
@@ -133,7 +133,7 @@ class Product extends SharedProduct
      * Set the value of width
      *
      * @param  float  $width
-     */ 
+     */
     public function setWidth(float $width = null)
     {
         $this->width = $width;
@@ -143,7 +143,7 @@ class Product extends SharedProduct
      * Get the value of height
      *
      * @return  float
-     */ 
+     */
     public function getHeight()
     {
         return $this->height;
@@ -153,7 +153,7 @@ class Product extends SharedProduct
      * Set the value of height
      *
      * @param  float  $height
-     */ 
+     */
     public function setHeight(float $height = null)
     {
         $this->height = $height;

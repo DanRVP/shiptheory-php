@@ -33,7 +33,7 @@ class ReturnLabel implements ObjectInterface
      * Get the value of outgoing_reference
      *
      * @return  string
-     */ 
+     */
     public function getOutgoingReference()
     {
         return $this->outgoing_reference;
@@ -45,7 +45,7 @@ class ReturnLabel implements ObjectInterface
      * @param  string  $outgoing_reference
      *
      * @return  self
-     */ 
+     */
     public function setOutgoingReference(string $outgoing_reference = null)
     {
         $this->outgoing_reference = $outgoing_reference;
@@ -55,7 +55,7 @@ class ReturnLabel implements ObjectInterface
      * Get the value of delivery_postcode
      *
      * @return  string
-     */ 
+     */
     public function getDeliveryPostcode()
     {
         return $this->delivery_postcode;
@@ -67,7 +67,7 @@ class ReturnLabel implements ObjectInterface
      * @param  string  $delivery_postcode
      *
      * @return  self
-     */ 
+     */
     public function setDeliveryPostcode(string $delivery_postcode = null)
     {
         $this->delivery_postcode = $delivery_postcode;
@@ -77,7 +77,7 @@ class ReturnLabel implements ObjectInterface
      * Get the value of return_service
      *
      * @return  integer
-     */ 
+     */
     public function getReturnService()
     {
         return $this->return_service;
@@ -89,7 +89,7 @@ class ReturnLabel implements ObjectInterface
      * @param  integer  $return_service
      *
      * @return  self
-     */ 
+     */
     public function setReturnService($return_service = null)
     {
         $this->return_service = $return_service;
@@ -99,7 +99,7 @@ class ReturnLabel implements ObjectInterface
      * Get the value of expiry
      *
      * @return  string
-     */ 
+     */
     public function getExpiry()
     {
         return $this->expiry;
@@ -111,7 +111,7 @@ class ReturnLabel implements ObjectInterface
      * @param  string  $expiry
      *
      * @return  self
-     */ 
+     */
     public function setExpiry(string $expiry = null)
     {
         $this->expiry = $expiry;

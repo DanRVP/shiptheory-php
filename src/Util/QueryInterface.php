@@ -4,7 +4,7 @@ namespace Shiptheory\Util;
 
 interface QueryInterface
 {
-    public function toQueryParams(bool $strict = true);
+    public function toQueryParams($strict = true);
 
     public function addFields(array $fields);
 

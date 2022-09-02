@@ -23,7 +23,7 @@ class Recipient extends Address implements ObjectInterface
      * Get the value of tax_numbers
      *
      * @return  TaxNumber[]
-     */ 
+     */
     public function getTaxNumbers()
     {
         return $this->tax_numbers;
@@ -33,7 +33,7 @@ class Recipient extends Address implements ObjectInterface
      * Set the value of tax_numbers
      *
      * @param  TaxNumber[]  $tax_numbers
-     */ 
+     */
     public function setTaxNumbers(array $tax_numbers = null)
     {
         $this->tax_numbers = $tax_numbers;
@@ -51,7 +51,7 @@ class Recipient extends Address implements ObjectInterface
      * Get the value of what3words
      *
      * @return  string
-     */ 
+     */
     public function getWhat3Words()
     {
         return $this->what3words;
@@ -61,7 +61,7 @@ class Recipient extends Address implements ObjectInterface
      * Set the value of what3words
      *
      * @param  string  $what3words
-     */ 
+     */
     public function setWhat3Words(string $what3words)
     {
         $this->what3words = $what3words;

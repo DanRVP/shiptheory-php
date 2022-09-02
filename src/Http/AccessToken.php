@@ -24,7 +24,7 @@ class AccessToken
      * Get the value of token
      *
      * @return  string
-     */ 
+     */
     public function getToken()
     {
         return $this->token;
@@ -36,7 +36,7 @@ class AccessToken
      * @param  string  $token
      *
      * @return  self
-     */ 
+     */
     public function setToken(string $token)
     {
         $this->token = $token;
@@ -46,7 +46,7 @@ class AccessToken
      * Get the value of age
      *
      * @return  \DateTime
-     */ 
+     */
     public function getAge()
     {
         return $this->age;
@@ -58,7 +58,7 @@ class AccessToken
      * @param  \DateTime  $age
      *
      * @return  self
-     */ 
+     */
     public function setAge(\DateTime $age)
     {
         $this->age = $age;

@@ -36,4 +36,3 @@ class ShipmentQuery implements QueryInterface
         'DeliveryAddress.tax_number',
     ];
 }
-   

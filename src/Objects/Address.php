@@ -83,7 +83,7 @@ class Address implements ObjectInterface
      * Get the value of company
      *
      * @return  string
-     */ 
+     */
     public function getCompany()
     {
         return $this->company;
@@ -93,7 +93,7 @@ class Address implements ObjectInterface
      * Set the value of company
      *
      * @param  string  $company
-     */ 
+     */
     public function setCompany(string $company = null)
     {
         $this->company = $company;
@@ -103,7 +103,7 @@ class Address implements ObjectInterface
      * Get the value of firstname
      *
      * @return  string
-     */ 
+     */
     public function getFirstname()
     {
         return $this->firstname;
@@ -113,7 +113,7 @@ class Address implements ObjectInterface
      * Set the value of firstname
      *
      * @param  string  $firstname
-     */ 
+     */
     public function setFirstname(string $firstname = null)
     {
         $this->firstname = $firstname;
@@ -123,7 +123,7 @@ class Address implements ObjectInterface
      * Get the value of lastname
      *
      * @return  string
-     */ 
+     */
     public function getLastname()
     {
         return $this->lastname;
@@ -133,7 +133,7 @@ class Address implements ObjectInterface
      * Set the value of lastname
      *
      * @param  string  $lastname
-     */ 
+     */
     public function setLastname(string $lastname = null)
     {
         $this->lastname = $lastname;
@@ -143,7 +143,7 @@ class Address implements ObjectInterface
      * Get the value of address_line_1
      *
      * @return  string
-     */ 
+     */
     public function getAddressLine1()
     {
         return $this->address_line_1;
@@ -153,7 +153,7 @@ class Address implements ObjectInterface
      * Set the value of address_line_1
      *
      * @param  string  $address_line_1
-     */ 
+     */
     public function setAddressLine1(string $address_line_1 = null)
     {
         $this->address_line_1 = $address_line_1;
@@ -163,7 +163,7 @@ class Address implements ObjectInterface
      * Get the value of address_line_2
      *
      * @return  string
-     */ 
+     */
     public function getAddressLine2()
     {
         return $this->address_line_2;
@@ -173,7 +173,7 @@ class Address implements ObjectInterface
      * Set the value of address_line_2
      *
      * @param  string  $address_line_2
-     */ 
+     */
     public function setAddressLine2(string $address_line_2 = null)
     {
         $this->address_line_2 = $address_line_2;
@@ -183,7 +183,7 @@ class Address implements ObjectInterface
      * Get the value of address_line_3
      *
      * @return  string
-     */ 
+     */
     public function getAddressLine3()
     {
         return $this->address_line_3;
@@ -193,7 +193,7 @@ class Address implements ObjectInterface
      * Set the value of address_line_3
      *
      * @param  string  $address_line_3
-     */ 
+     */
     public function setAddressLine3(string $address_line_3 = null)
     {
         $this->address_line_3 = $address_line_3;
@@ -203,7 +203,7 @@ class Address implements ObjectInterface
      * Get the value of city
      *
      * @return  string;
-     */ 
+     */
     public function getCity()
     {
         return $this->city;
@@ -213,7 +213,7 @@ class Address implements ObjectInterface
      * Set the value of city
      *
      * @param  string;  $city
-     */ 
+     */
     public function setCity(string $city = null)
     {
         $this->city = $city;
@@ -223,7 +223,7 @@ class Address implements ObjectInterface
      * Get the value of country
      *
      * @return  string
-     */ 
+     */
     public function getCountry()
     {
         return $this->country;
@@ -233,18 +233,18 @@ class Address implements ObjectInterface
      * Set the value of country
      *
      * @param  string  $country
-     */ 
+     */
     public function setCountry(string $country = null)
     {
         $this->country = $country;
     }
-    
+
 
     /**
      * Get the value of postcode
      *
      * @return  string
-     */ 
+     */
     public function getPostcode()
     {
         return $this->postcode;
@@ -254,7 +254,7 @@ class Address implements ObjectInterface
      * Set the value of postcode
      *
      * @param  string  $postcode
-     */ 
+     */
     public function setPostcode(string $postcode = null)
     {
         $this->postcode = $postcode;
@@ -264,7 +264,7 @@ class Address implements ObjectInterface
      * Get the value of telephone
      *
      * @return  string
-     */ 
+     */
     public function getTelephone()
     {
         return $this->telephone;
@@ -274,7 +274,7 @@ class Address implements ObjectInterface
      * Set the value of telephone
      *
      * @param  string  $telephone
-     */ 
+     */
     public function setTelephone(string $telephone = null)
     {
         $this->telephone = $telephone;
@@ -284,7 +284,7 @@ class Address implements ObjectInterface
      * Get the value of mobile
      *
      * @return  string
-     */ 
+     */
     public function getMobile()
     {
         return $this->mobile;
@@ -294,7 +294,7 @@ class Address implements ObjectInterface
      * Set the value of mobile
      *
      * @param  string  $mobile
-     */ 
+     */
     public function setMobile(string $mobile = null)
     {
         $this->mobile = $mobile;
@@ -304,7 +304,7 @@ class Address implements ObjectInterface
      * Get the value of email
      *
      * @return  string
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -314,7 +314,7 @@ class Address implements ObjectInterface
      * Set the value of email
      *
      * @param  string  $email
-     */ 
+     */
     public function setEmail(string $email = null)
     {
         $this->email = $email;
@@ -324,7 +324,7 @@ class Address implements ObjectInterface
      * Get the value of tax_number
      *
      * @return  string
-     */ 
+     */
     public function getTax_number()
     {
         return $this->tax_number;
@@ -334,7 +334,7 @@ class Address implements ObjectInterface
      * Set the value of tax_number
      *
      * @param  string  $tax_number
-     */ 
+     */
     public function setTax_number(string $tax_number = null)
     {
         $this->tax_number = $tax_number;
@@ -344,7 +344,7 @@ class Address implements ObjectInterface
      * Get the value of county
      *
      * @return  string
-     */ 
+     */
     public function getCounty()
     {
         return $this->county;
@@ -354,7 +354,7 @@ class Address implements ObjectInterface
      * Set the value of county
      *
      * @param  string  $county
-     */ 
+     */
     public function setCounty(string $county)
     {
         $this->county = $county;
