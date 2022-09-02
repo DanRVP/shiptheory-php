@@ -32,7 +32,7 @@ class Logger
      */
     public function log($message, $title = 'Info')
     {
-        if (!Environment::loadEnvVariable('LOG_REQUESTS')) {
+        if (!Environment::loadEnvVariable('SHIPTHEORY_PHP_LOG_REQUESTS')) {
             return;
         }
 

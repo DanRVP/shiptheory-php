@@ -77,7 +77,7 @@ class Api
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
-            CURLOPT_SSL_VERIFYPEER => Environment::loadEnvVariable('SSL_VERIFY_PEER'),
+            CURLOPT_SSL_VERIFYPEER => Environment::loadEnvVariable('SHIPTHEORY_PHP_SSL_VERIFY_PEER'),
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json',
                 'Content-Type: application/json',

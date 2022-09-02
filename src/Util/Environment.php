@@ -8,17 +8,20 @@ class Environment
 
     /**
      * Loads the contents of .env and and uses putenv() to save the values.
+     * Only tries to get shiptheory-php env variables and ignores all others.
      */
     public static function loadFromEnvFile()
     {
-        $env_contents = file_get_contents(__DIR__ . '/../../.env');
+        $env_contents = file_get_contents('.env');
         if (!$env_contents) {
             return;
         }
 
         $variables = explode("\n", $env_contents);
         array_map(function ($variable_set) {
-            putenv(self::VARIABLE_PREFIX . trim($variable_set));
+            if (strpos($variable_set, self::VARIABLE_PREFIX) !== false) {
+                putenv($variable_set);
+            }
         }, $variables);
     }
 
@@ -30,7 +33,7 @@ class Environment
      */
     public static function loadEnvVariable($name)
     {
-        $value = getenv(self::VARIABLE_PREFIX . $name);
+        $value = getenv($name);
         switch ($value) {
             case 'null':
                 return null;
