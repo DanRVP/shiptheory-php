@@ -110,6 +110,7 @@ class Api
         $result = curl_exec($curl);
         $info = curl_getinfo($curl);
         $http_response_code = $info['http_code'];
+        $info['body'] = json_decode($data, true);
 
         $this->logger->log(json_encode($info), strtoupper($http_request_method) . " - $endpoint");
 
