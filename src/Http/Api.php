@@ -109,15 +109,16 @@ class Api
 
         $result = curl_exec($curl);
         $info = curl_getinfo($curl);
+        $http_response_code = $info['http_code'];
+
         $this->logger->log(json_encode($info, strtoupper($http_request_method) . "- $endpoint"));
 
         if ($result === false) {
-            $error = new Error(curl_error($curl), curl_errno($curl));
+            $error = new Error(curl_error($curl), $http_response_code);
             curl_close($curl);
             return $error;
         }
 
-        $http_response_code = $info['http_code'];
         if ($http_response_code != 200) {
             $response_body = json_decode($result);
             return new Error($response_body->message, $http_response_code);
