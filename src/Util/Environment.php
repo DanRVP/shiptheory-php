@@ -25,7 +25,7 @@ class Environment
     /**
      * Loads an environment variable using getenv().
      *
-     * @param $name Name of the environment variable.
+     * @param string $name The name of the environment variable.
      * @return mixed
      */
     public static function loadEnvVariable($name)
