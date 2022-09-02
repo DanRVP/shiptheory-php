@@ -32,6 +32,10 @@ class Logger
      */
     public function log($message, $title = 'Info')
     {
+        if (!Environment::loadEnvVariable('LOG_REQUESTS')) {
+            return;
+        }
+
         $log = $this->getLogTimeStamp() . " $title: $message\n\n";
         file_put_contents($this->log_path . $this->getLogName(), $log, FILE_APPEND);
     }

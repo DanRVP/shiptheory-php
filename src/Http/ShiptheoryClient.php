@@ -3,6 +3,7 @@
 namespace Shiptheory\Http;
 
 use DateTime;
+use Shiptheory\Util\Environment;
 
 class ShiptheoryClient
 {
@@ -23,6 +24,7 @@ class ShiptheoryClient
 
     public function __construct($username, $password)
     {
+        Environment::loadFromEnvFile();
         $this->username = $username;
         $this->password = $password;
     }
