@@ -8,6 +8,9 @@ Require with composer:
 composer require dan-rogers/shiptheory-php
 ```
 
+## Usage
+It is recommended that you use the objects provied to build your requests as they will result with a perfect request body every time. However, if you wish you can just provide the query parameters or the JSON body (depending on request type) as a string to the method you are calling. 
+
 ## Example of viewing a shipment
 ```php
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
