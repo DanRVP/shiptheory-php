@@ -45,10 +45,10 @@ trait ObjectTrait
     {
         $arrayed = $remove_null_fields ? $this->toArray(true) : $this->toArray();
         if ($pretty_print) {
-            return json_encode($arrayed, JSON_PRETTY_PRINT);
+            return json_encode($arrayed, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
         }
 
-        return json_encode($arrayed);
+        return json_encode($arrayed, JSON_UNESCAPED_SLASHES);
     }
 
     /**
