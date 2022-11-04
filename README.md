@@ -1,6 +1,12 @@
+
 API client to communicate with the Shiptheory API.
 
-The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all endpoint methods, then look in `src/Http/ShiptheoryClient.php`.
+## Features
+- Build Shiptheory request bodies and queries with ease.
+- Dedicated methods to query each Shiptheory endpoint.
+- Automatic token authentication. Just provide your credentials and the library will keep your tokens valid for as long as you need.
+- Standardised error messaging.
+- Configuration via .env
 
 ## Installation
 Require with composer:
@@ -8,7 +14,20 @@ Require with composer:
 composer require dan-rogers/shiptheory-php
 ```
 
+## Configuration
+The library currently utilises a .env file to configure certain aspects of the application. 
+
+IMPORTANT: It does not use any version of phpdotenv and instead uses its own custom implementation to keep it lightweight.
+
+Copy values from `.env.example` into a new or existing .env file in the root of your project.
+
+Currently supported configuration options:
+- SHIPTHEORY_PHP_LOG_REQUESTS - (Boolean) When set to `true` requests are logged. When `false` or nonexistent requests are not logged.
+- SHIPTHEORY_PHP_SSL_VERIFY_PEER - (Boolean) When set to `true` SSL verification is enabled. When `false` or nonexistent requests do not use SSL verification. 
+
 ## Usage
+The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all endpoint methods, then look in `src/Http/ShiptheoryClient.php`.
+
 It is recommended that you use the objects provied to build your requests as they will result with a perfect request body every time. However, if you wish you can just provide the query parameters or the JSON body (depending on request type) as a string to the method you are calling. 
 
 ## Example of viewing a shipment
