@@ -20,11 +20,6 @@ use Shiptheory\Objects\TaxNumber;
 
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
 
-//Start new shipment data object
-$shipment = (new Shipment())
-    ->setReference('Test1234')
-    ->setReference2('Test5678');
-
 // Set Shipment Details
 $shipment_detail = (new ShipmentDetail())
     ->setWeight(1)
@@ -33,7 +28,7 @@ $shipment_detail = (new ShipmentDetail())
     ->setShippingPrice(2.99)
     ->setReference3('ORDERREF3')
     ->setSalesSource('My Store')
-    ->setShipDate('2022-04-30')
+    ->setShipDate('2023-04-30')
     ->setCurrencyCode('GBP');
 
 // Set Recipient
@@ -77,11 +72,14 @@ $product = (new ShipmentProduct())
     ->setCommodityCode('8443991000')
     ->setCommodityManucountry('PL');
 
-// Add all elements to the shipment
-$shipment->setShipmentDetail($shipment_detail);
-$shipment->setRecipient($reciever);
-$shipment->setSender($sender);
-$shipment->setProducts([$product]);
+//Start new shipment data object
+$shipment = (new Shipment())
+    ->setReference('4566466654')
+    ->setReference2('Test5678')
+    ->setShipmentDetail($shipment_detail)
+    ->setRecipient($reciever)
+    ->setSender($sender)
+    ->setProducts([$product]);
 
 // Send shipment to Shiptheory
 $data = $shipment->toJson(true);
@@ -89,7 +87,7 @@ $result = $client->bookShipment($data);
 
 var_dump($result);
 
-// // View a shipment
+// View a shipment
 var_dump($client->viewShipment('Test1234'));
 
 // List shipments
