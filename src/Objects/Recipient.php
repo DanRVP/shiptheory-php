@@ -32,6 +32,8 @@ class Recipient extends Address
     public function setTaxNumbers($tax_numbers = [])
     {
         $this->tax_numbers = $tax_numbers;
+
+        return $this;
     }
 
     /**
@@ -62,5 +64,7 @@ class Recipient extends Address
     public function setWhat3Words($what3words)
     {
         $this->what3words = $what3words;
+
+        return $this;
     }
 }

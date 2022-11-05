@@ -21,60 +21,61 @@ use Shiptheory\Objects\TaxNumber;
 $client = new ShiptheoryClient('test@test.com', 'Password123!');
 
 //Start new shipment data object
-$shipment = new Shipment();
-$shipment->setReference('Test1234');
-$shipment->setReference2('Test5678');
+$shipment = (new Shipment())
+    ->setReference('Test1234')
+    ->setReference2('Test5678');
 
 // Set Shipment Details
-$shipment_detail = new ShipmentDetail();
-$shipment_detail->setWeight(1);
-$shipment_detail->setParcels(1);
-$shipment_detail->setValue(1);
-$shipment_detail->setShippingPrice(2.99);
-$shipment_detail->setReference3('ORDERREF3');
-$shipment_detail->setSalesSource('My Store');
-$shipment_detail->setShipDate('2022-04-30');
-$shipment_detail->setCurrencyCode('GBP');
+$shipment_detail = (new ShipmentDetail())
+    ->setWeight(1)
+    ->setParcels(1)
+    ->setValue(1)
+    ->setShippingPrice(2.99)
+    ->setReference3('ORDERREF3')
+    ->setSalesSource('My Store')
+    ->setShipDate('2022-04-30')
+    ->setCurrencyCode('GBP');
 
 // Set Recipient
-$reciever = new Recipient();
-$reciever->setCompany('Shiptheory');
-$reciever->setFirstname('Test');
-$reciever->setLastname('Customer');
-$reciever->setAddressLine1('Unit 4.1 Paintworks');
-$reciever->setAddressLine2('Bath Road');
-$reciever->setCity('Bristol');
-$reciever->setCountry('GB');
-$reciever->setPostcode('BS4 3EH');
-$reciever->setEmail('recipient@test.com');
-$reciever->setTelephone('01234567890');
-$reciever->setWhat3Words('///what.three.words');
+$reciever = (new Recipient())
+    ->setCompany('Shiptheory')
+    ->setFirstname('Test')
+    ->setLastname('Customer')
+    ->setAddressLine1('Unit 4.1 Paintworks')
+    ->setAddressLine2('Bath Road')
+    ->setCity('Bristol')
+    ->setCountry('GB')
+    ->setPostcode('BS4 3EH')
+    ->setEmail('recipient@test.com')
+    ->setTelephone('01234567890')
+    ->setWhat3Words('///what.three.words');
+
 $eori = new TaxNumber('GB205672212000', AddressTaxNumberTypes::EORI);
 $vat = new TaxNumber('GB123456789', AddressTaxNumberTypes::VAT);
 $reciever->setTaxNumbers([$eori, $vat]);
 
 // Set sender
-$sender = new Sender();
-$sender->setCompany('Shiptheory');
-$sender->setFirstname('Test');
-$sender->setLastname('Shipper');
-$sender->setAddressLine1('Bristol Old Vic');
-$sender->setAddressLine2('King Street');
-$sender->setCity('Bristol');
-$sender->setCountry('GB');
-$sender->setPostcode('BS1 4ED');
-$sender->setEmail('sender@test.com');
-$sender->setTelephone('01234567890');
+$sender = (new Sender())
+    ->setCompany('Shiptheory')
+    ->setFirstname('Test')
+    ->setLastname('Shipper')
+    ->setAddressLine1('Bristol Old Vic')
+    ->setAddressLine2('King Street')
+    ->setCity('Bristol')
+    ->setCountry('GB')
+    ->setPostcode('BS1 4ED')
+    ->setEmail('sender@test.com')
+    ->setTelephone('01234567890');
 
 // Set Product
-$product = new ShipmentProduct();
-$product->setName('My Test Product');
-$product->setSku('TestProd1');
-$product->setQty(1);
-$product->setValue(1);
-$product->setWeight(1);
-$product->setCommodityCode('8443991000');
-$product->setCommodityManucountry('PL');
+$product = (new ShipmentProduct())
+    ->setName('My Test Product')
+    ->setSku('TestProd1')
+    ->setQty(1)
+    ->setValue(1)
+    ->setWeight(1)
+    ->setCommodityCode('8443991000')
+    ->setCommodityManucountry('PL');
 
 // Add all elements to the shipment
 $shipment->setShipmentDetail($shipment_detail);
@@ -124,29 +125,29 @@ var_dump($client->getPackageSizes($package_query->toQueryParams()));
 var_dump($client->getOutgoingDeliveryServices());
 
 // Create a return label
-$label = new ReturnLabel();
-$label->setOutgoingReference('Test1234');
-$label->setDeliveryPostcode('BS4 3EH');
-$label->setReturnService(1);
-$label->setExpiry('2022-05-30');
+$label = (new ReturnLabel())
+    ->setOutgoingReference('Test1234')
+    ->setDeliveryPostcode('BS4 3EH')
+    ->setReturnService(1)
+    ->setExpiry('2022-05-30');
 
 $data = $label->toJson(true);
 var_dump($client->createReturnLabel($data));
 
 // Add a new Product
-$product = new Product();
-$product->setSku('API-Product-1');
-$product->setName('API Test Product');
-$product->setPrice(1.99);
-$product->setWeight(1.5);
-$product->setBarcode('0123456789');
-$product->setCommodityCode('8443991000');
-$product->setCommodityManucountry('GB');
-$product->setCommodityDescription('This is a test product');
-$product->setCommodityComposition('Electronic components');
-$product->setLength(25);
-$product->setWidth(27.69);
-$product->setHeight(4.66);
+$product = (new Product())
+    ->setSku('API-Product-1')
+    ->setName('API Test Product')
+    ->setPrice(1.99)
+    ->setWeight(1.5)
+    ->setBarcode('0123456789')
+    ->setCommodityCode('8443991000')
+    ->setCommodityManucountry('GB')
+    ->setCommodityDescription('This is a test product')
+    ->setCommodityComposition('Electronic components')
+    ->setLength(25)
+    ->setWidth(27.69)
+    ->setHeight(4.66);
 
 $data = $product->toJson(true);
 var_dump($client->addProduct($data));
@@ -155,8 +156,7 @@ var_dump($client->addProduct($data));
 var_dump($client->viewProduct('API-Product-1'));
 
 // Update a product
-$product = new Product();
-$product->setPrice(5.99);
+$product = (new Product())->setPrice(5.99);
 
 $data = $product->toJson(true);
 var_dump($client->updateProduct('API-Product-1', $data));

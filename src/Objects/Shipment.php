@@ -72,6 +72,8 @@ class Shipment implements ObjectInterface
     public function setReference2($reference2)
     {
         $this->reference2 = $reference2;
+
+        return $this;
     }
 
     /**
@@ -92,6 +94,8 @@ class Shipment implements ObjectInterface
     public function setReference($reference)
     {
         $this->reference = $reference;
+
+        return $this;
     }
 
     /**
@@ -112,6 +116,8 @@ class Shipment implements ObjectInterface
     public function setDeliveryService($delivery_service)
     {
         $this->delivery_service = $delivery_service;
+
+        return $this;
     }
 
     /**
@@ -132,6 +138,8 @@ class Shipment implements ObjectInterface
     public function setIncrement($increment)
     {
         $this->increment = $increment;
+
+        return $this;
     }
 
     /**
@@ -152,6 +160,8 @@ class Shipment implements ObjectInterface
     public function setShipmentDetail($shipment_detail)
     {
         $this->shipment_detail = $shipment_detail;
+
+        return $this;
     }
 
     /**
@@ -172,6 +182,8 @@ class Shipment implements ObjectInterface
     public function setRecipient($recipient)
     {
         $this->recipient = $recipient;
+
+        return $this;
     }
 
     /**
@@ -192,6 +204,8 @@ class Shipment implements ObjectInterface
     public function setSender($sender)
     {
         $this->sender = $sender;
+
+        return $this;
     }
 
     /**
@@ -212,6 +226,8 @@ class Shipment implements ObjectInterface
     public function setProducts($products)
     {
         $this->products = $products;
+
+        return $this;
     }
 
     /**
@@ -232,5 +248,7 @@ class Shipment implements ObjectInterface
     public function setPackages($packages)
     {
         $this->packages = $packages;
+
+        return $this;
     }
 }

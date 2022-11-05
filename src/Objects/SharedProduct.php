@@ -62,6 +62,8 @@ class SharedProduct implements ObjectInterface
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -82,6 +84,8 @@ class SharedProduct implements ObjectInterface
     public function setSku($sku)
     {
         $this->sku = $sku;
+
+        return $this;
     }
 
     /**
@@ -102,6 +106,8 @@ class SharedProduct implements ObjectInterface
     public function setQty($qty)
     {
         $this->qty = $qty;
+
+        return $this;
     }
 
     /**
@@ -122,6 +128,8 @@ class SharedProduct implements ObjectInterface
     public function setWeight($weight)
     {
         $this->weight = $weight;
+
+        return $this;
     }
 
     /**
@@ -142,6 +150,8 @@ class SharedProduct implements ObjectInterface
     public function setCommodityCode($commodity_code)
     {
         $this->commodity_code = $commodity_code;
+
+        return $this;
     }
 
     /**
@@ -162,6 +172,8 @@ class SharedProduct implements ObjectInterface
     public function setCommodityDescription($commodity_description)
     {
         $this->commodity_description = $commodity_description;
+
+        return $this;
     }
 
     /**
@@ -182,5 +194,7 @@ class SharedProduct implements ObjectInterface
     public function setCommodityManucountry($commodity_manucountry)
     {
         $this->commodity_manucountry = $commodity_manucountry;
+
+        return $this;
     }
 }

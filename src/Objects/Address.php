@@ -97,6 +97,8 @@ class Address implements ObjectInterface
     public function setCompany($company)
     {
         $this->company = $company;
+
+        return $this;
     }
 
     /**
@@ -117,6 +119,8 @@ class Address implements ObjectInterface
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
+
+        return $this;
     }
 
     /**
@@ -137,6 +141,8 @@ class Address implements ObjectInterface
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+
+        return $this;
     }
 
     /**
@@ -157,6 +163,8 @@ class Address implements ObjectInterface
     public function setAddressLine1($address_line_1)
     {
         $this->address_line_1 = $address_line_1;
+
+        return $this;
     }
 
     /**
@@ -177,6 +185,8 @@ class Address implements ObjectInterface
     public function setAddressLine2($address_line_2)
     {
         $this->address_line_2 = $address_line_2;
+
+        return $this;
     }
 
     /**
@@ -197,6 +207,8 @@ class Address implements ObjectInterface
     public function setAddressLine3($address_line_3)
     {
         $this->address_line_3 = $address_line_3;
+
+        return $this;
     }
 
     /**
@@ -212,11 +224,13 @@ class Address implements ObjectInterface
     /**
      * Set the value of city
      *
-     * @param  string;  $city
+     * @param  string  $city
      */
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
     }
 
     /**
@@ -237,6 +251,8 @@ class Address implements ObjectInterface
     public function setCountry($country)
     {
         $this->country = $country;
+
+        return $this;
     }
 
 
@@ -258,6 +274,8 @@ class Address implements ObjectInterface
     public function setPostcode($postcode)
     {
         $this->postcode = $postcode;
+
+        return $this;
     }
 
     /**
@@ -278,6 +296,8 @@ class Address implements ObjectInterface
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
+
+        return $this;
     }
 
     /**
@@ -298,6 +318,8 @@ class Address implements ObjectInterface
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
+
+        return $this;
     }
 
     /**
@@ -318,6 +340,8 @@ class Address implements ObjectInterface
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
@@ -325,7 +349,7 @@ class Address implements ObjectInterface
      *
      * @return  string
      */
-    public function getTax_number()
+    public function getTaxNumber()
     {
         return $this->tax_number;
     }
@@ -335,9 +359,11 @@ class Address implements ObjectInterface
      *
      * @param  string  $tax_number
      */
-    public function setTax_number($tax_number)
+    public function setTaxNumber($tax_number)
     {
         $this->tax_number = $tax_number;
+
+        return $this;
     }
 
     /**
@@ -358,5 +384,7 @@ class Address implements ObjectInterface
     public function setCounty($county)
     {
         $this->county = $county;
+
+        return $this;
     }
 }

@@ -21,9 +21,7 @@ class Response
 
     public function __construct($body = null, $code = null, $url = null)
     {
-        $this->setBody($body);
-        $this->setCode($code);
-        $this->setUrl($url);
+        $this->setBody($body)->setCode($code)->setUrl($url);
     }
 
     /**
@@ -46,6 +44,8 @@ class Response
     public function setBody($body = null)
     {
         $this->body = $body;
+
+        return $this;
     }
 
     /**
@@ -68,6 +68,8 @@ class Response
     public function setCode($code = null)
     {
         $this->code = $code;
+
+        return $this;
     }
 
     /**
@@ -88,5 +90,7 @@ class Response
     public function setUrl($url = null)
     {
         $this->url = $url;
+
+        return $this;
     }
 }

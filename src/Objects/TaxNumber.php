@@ -19,9 +19,9 @@ class TaxNumber implements ObjectInterface
      */
     protected $tax_number_type;
 
-    public function __construct($number, $type)
+    public function __construct($tax_number = null, $type = null)
     {
-        $this->setTaxNumber($number);
+        $this->setTaxNumber($tax_number);
         $this->setTaxNumberType($type);
     }
 
@@ -43,6 +43,8 @@ class TaxNumber implements ObjectInterface
     public function setTaxNumber($tax_number)
     {
         $this->tax_number = $tax_number;
+
+        return $this;
     }
 
     /**
@@ -63,5 +65,7 @@ class TaxNumber implements ObjectInterface
     public function setTaxNumberType($tax_number_type)
     {
         $this->tax_number_type = $tax_number_type;
+
+        return $this;
     }
 }

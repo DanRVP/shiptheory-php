@@ -37,6 +37,8 @@ class Package implements ObjectInterface
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -57,5 +59,7 @@ class Package implements ObjectInterface
     public function setWeight($weight)
     {
         $this->weight = $weight;
+
+        return $this;
     }
 }

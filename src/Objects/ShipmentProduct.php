@@ -27,5 +27,7 @@ class ShipmentProduct extends SharedProduct
     public function setValue($value = null)
     {
         $this->value = $value;
+
+        return $this;
     }
 }

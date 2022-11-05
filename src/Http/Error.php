@@ -16,8 +16,7 @@ class Error
 
     public function __construct($message = null, $code = null)
     {
-        $this->setCode($code);
-        $this->setMessage($message);
+        $this->setCode($code)->setMessage($message);
     }
 
     /**
@@ -40,6 +39,8 @@ class Error
     public function setCode($code = null)
     {
         $this->code = $code;
+
+        return $this;
     }
 
     /**
@@ -62,5 +63,7 @@ class Error
     public function setMessage($message)
     {
         $this->message = $message;
+
+        return $this;
     }
 }

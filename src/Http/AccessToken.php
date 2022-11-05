@@ -16,8 +16,7 @@ class AccessToken
 
     public function __construct($token, $age)
     {
-        $this->setToken($token);
-        $this->setAge($age);
+        $this->setToken($token)->setAge($age);
     }
 
     /**
@@ -40,6 +39,8 @@ class AccessToken
     public function setToken($token)
     {
         $this->token = $token;
+
+        return $this;
     }
 
     /**
@@ -62,5 +63,7 @@ class AccessToken
     public function setAge($age)
     {
         $this->age = $age;
+
+        return $this;
     }
 }

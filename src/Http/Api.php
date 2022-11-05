@@ -22,7 +22,7 @@ class Api
     public function __construct($api_token = null)
     {
         $this->api_token = $api_token;
-        $this->logger = new Logger();
+        $this->logger = new Logger(Environment::loadEnvVariable('SHIPTHEORY_PHP_LOG_PATH'));
     }
 
     /**
@@ -128,9 +128,7 @@ class Api
         }
 
         $response = new Response();
-        $response->setBody($result);
-        $response->setCode($http_response_code);
-        $response->setUrl($info['url']);
+        $response->setBody($result)->setCode($http_response_code)->setUrl($info['url']);
 
         curl_close($curl);
 
@@ -152,5 +150,7 @@ class Api
     public function setApiToken($token)
     {
         $this->api_token = $token;
+
+        return $this;
     }
 }

@@ -9,7 +9,12 @@ trait QueryTrait
      */
     protected $fields = [];
 
-    public function __construct(array $fields)
+    /**
+     * @var array
+     */
+    protected $valid_fields = [];
+
+    public function __construct($fields = [])
     {
         $this->setFields($fields);
     }
@@ -41,7 +46,7 @@ trait QueryTrait
      *
      * @param array $fields Fields to add.
      */
-    public function addFields(array $fields) {
+    public function addFields($fields) {
         $this->fields = array_merge($this->fields, $fields);
     }
 
@@ -50,7 +55,7 @@ trait QueryTrait
      *
      * @param array $fields Fields to add.
      */
-    protected function addExtraValidFields(array $fields)
+    protected function addExtraValidFields($fields)
     {
         $this->valid_fields = array_merge($this->valid_fields, $fields);
     }
@@ -68,8 +73,10 @@ trait QueryTrait
      *
      * @param array
      */
-    public function setFields(array $fields = [])
+    public function setFields($fields)
     {
         $this->fields = $fields;
+
+        return $this;
     }
 }

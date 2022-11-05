@@ -53,6 +53,8 @@ class Product extends SharedProduct
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
@@ -73,6 +75,8 @@ class Product extends SharedProduct
     public function setBarcode($barcode)
     {
         $this->barcode = $barcode;
+
+        return $this;
     }
 
     /**
@@ -93,6 +97,8 @@ class Product extends SharedProduct
     public function setCommodityComposition($commodity_composition)
     {
         $this->commodity_composition = $commodity_composition;
+
+        return $this;
     }
 
     /**
@@ -113,6 +119,8 @@ class Product extends SharedProduct
     public function setLength($length)
     {
         $this->length = $length;
+
+        return $this;
     }
 
     /**
@@ -133,6 +141,8 @@ class Product extends SharedProduct
     public function setWidth($width)
     {
         $this->width = $width;
+
+        return $this;
     }
 
     /**
@@ -153,5 +163,7 @@ class Product extends SharedProduct
     public function setHeight($height)
     {
         $this->height = $height;
+
+        return $this;
     }
 }

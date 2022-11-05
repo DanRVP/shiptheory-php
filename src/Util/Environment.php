@@ -18,11 +18,11 @@ class Environment
         }
 
         $variables = explode("\n", $env_contents);
-        array_map(function ($variable_set) {
+        foreach ($variables as $variable_set) {
             if (strpos($variable_set, self::VARIABLE_PREFIX) !== false) {
                 putenv($variable_set);
             }
-        }, $variables);
+        }
     }
 
     /**

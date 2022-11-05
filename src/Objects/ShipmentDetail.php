@@ -102,6 +102,8 @@ class ShipmentDetail implements ObjectInterface
     public function setParcels($parcels)
     {
         $this->parcels = $parcels;
+
+        return $this;
     }
 
     /**
@@ -122,6 +124,8 @@ class ShipmentDetail implements ObjectInterface
     public function setWeight($weight)
     {
         $this->weight = $weight;
+
+        return $this;
     }
 
     /**
@@ -142,6 +146,8 @@ class ShipmentDetail implements ObjectInterface
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**
@@ -162,6 +168,8 @@ class ShipmentDetail implements ObjectInterface
     public function setShippingPrice($shipping_price)
     {
         $this->shipping_price = $shipping_price;
+
+        return $this;
     }
 
     /**
@@ -182,6 +190,8 @@ class ShipmentDetail implements ObjectInterface
     public function setReference3($reference3)
     {
         $this->reference3 = $reference3;
+
+        return $this;
     }
 
     /**
@@ -202,6 +212,8 @@ class ShipmentDetail implements ObjectInterface
     public function setFormatId($format_id)
     {
         $this->format_id = $format_id;
+
+        return $this;
     }
 
     /**
@@ -222,6 +234,8 @@ class ShipmentDetail implements ObjectInterface
     public function setInstructions($instructions)
     {
         $this->instructions = $instructions;
+
+        return $this;
     }
 
     /**
@@ -242,6 +256,8 @@ class ShipmentDetail implements ObjectInterface
     public function setGiftMessage($gift_message)
     {
         $this->gift_message = $gift_message;
+
+        return $this;
     }
 
     /**
@@ -258,6 +274,8 @@ class ShipmentDetail implements ObjectInterface
     public function setChannelShipserviceName($channel_shipservice_name)
     {
         $this->channel_shipservice_name = $channel_shipservice_name;
+
+        return $this;
     }
 
     /**
@@ -278,6 +296,8 @@ class ShipmentDetail implements ObjectInterface
     public function setCurrencyCode($currency_code)
     {
         $this->currency_code = $currency_code;
+
+        return $this;
     }
 
     /**
@@ -298,6 +318,8 @@ class ShipmentDetail implements ObjectInterface
     public function setSalesSource($sales_source)
     {
         $this->sales_source = $sales_source;
+
+        return $this;
     }
 
     /**
@@ -318,6 +340,8 @@ class ShipmentDetail implements ObjectInterface
     public function setShipDate($ship_date)
     {
         $this->ship_date = $ship_date;
+
+        return $this;
     }
 
     /**
@@ -338,6 +362,8 @@ class ShipmentDetail implements ObjectInterface
     public function setRulesMetadata($rules_metadata)
     {
         $this->rules_metadata = $rules_metadata;
+
+        return $this;
     }
 
     /**
@@ -358,6 +384,8 @@ class ShipmentDetail implements ObjectInterface
     public function setDutyTaxNumber($duty_tax_number)
     {
         $this->duty_tax_number = $duty_tax_number;
+
+        return $this;
     }
 
     /**
@@ -378,5 +406,7 @@ class ShipmentDetail implements ObjectInterface
     public function setDutyTaxNumberType($duty_tax_number_type)
     {
         $this->duty_tax_number_type = $duty_tax_number_type;
+
+        return $this;
     }
 }

@@ -18,7 +18,7 @@ class Logger
      */
     public function __construct($path = null)
     {
-        if (!empty($path)) {
+        if (!empty($path) && is_string($path)) {
             $this->log_path = $path;
         }
     }
