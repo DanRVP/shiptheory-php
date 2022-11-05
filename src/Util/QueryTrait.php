@@ -9,11 +9,6 @@ trait QueryTrait
      */
     protected $fields = [];
 
-    /**
-     * @var array
-     */
-    protected $valid_fields = [];
-
     public function __construct($fields = [])
     {
         $this->setFields($fields);
