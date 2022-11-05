@@ -6,9 +6,9 @@ interface QueryInterface
 {
     public function toQueryParams($strict = true);
 
-    public function addFields(array $fields);
+    public function addFields($fields);
 
     public function getFields();
 
-    public function setFields(array $fields = []);
+    public function setFields($fields = []);
 }
