@@ -1,7 +1,7 @@
 
 API client to communicate with the Shiptheory API.
 
-- To create pull requests fork this repository.
+- To create pull requests fork this repository (Please adhere to the guidelines in the pull request template).
 - Use GitHub issues to detail any problems encountered. 
 
 ## Features
