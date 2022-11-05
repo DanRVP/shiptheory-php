@@ -18,7 +18,7 @@ composer require dan-rogers/shiptheory-php
 ```
 
 ## Configuration
-The library currently utilises a .env file to configure certain aspects of the application. 
+The library currently utilises a .env file to configure certain aspects of the library. 
 
 IMPORTANT: It does not use any version of phpdotenv and instead uses its own custom implementation to keep it lightweight.
 
@@ -28,6 +28,14 @@ Currently supported configuration options:
 - SHIPTHEORY_PHP_LOG_REQUESTS - (Boolean) When set to `true` requests are logged. When `false` or nonexistent requests are not logged.
 - SHIPTHEORY_PHP_SSL_VERIFY_PEER - (Boolean) When set to `true` SSL verification is enabled. When `false` or nonexistent requests do not use SSL verification.
 - SHIPTHEORY_PHP_LOG_PATH - (String) When a string is set it is used as the path to the folder where log files are generated.
+
+## Using a Shiptheory Partner Tag
+"If you are developing an application that will be used by more than 1 company, or an application that you intend to distribute in anyway, you must include the Shiptheory-Partner-Tag http request header in all of your requests. Please contact Shiptheory support to obtain a partner tag. There is no charge for this, tags are used to provide better support to customers and partners." - API Docs
+
+In order to add a partner tag to your API requests add it as the third argument when instantiating a new ShiptheoryClient.
+```php
+$client = new ShiptheoryClient('test@test.com', 'Password123!', 'my_partner_tag');
+```
 
 ## Usage
 The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all endpoint methods, then look in `src/Http/ShiptheoryClient.php`.
