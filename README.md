@@ -1,5 +1,7 @@
 
-API client to communicate with the Shiptheory API.
+# Shiptheory API library for PHP.
+
+A Python version exists: [Shiptheory API library for Python](https://github.com/DanRVP/shiptheory-python)
 
 - To create pull requests fork this repository (Please adhere to the guidelines in the pull request template).
 - Use GitHub issues to detail any problems encountered. 
