@@ -1,6 +1,9 @@
 
 API client to communicate with the Shiptheory API.
 
+- To create pull requests fork this repository (Please adhere to the guidelines in the pull request template).
+- Use GitHub issues to detail any problems encountered. 
+
 ## Features
 - Build Shiptheory request bodies and queries with ease.
 - Dedicated methods to query each Shiptheory endpoint.
@@ -23,7 +26,8 @@ Copy values from `.env.example` into a new or existing .env file in the root of 
 
 Currently supported configuration options:
 - SHIPTHEORY_PHP_LOG_REQUESTS - (Boolean) When set to `true` requests are logged. When `false` or nonexistent requests are not logged.
-- SHIPTHEORY_PHP_SSL_VERIFY_PEER - (Boolean) When set to `true` SSL verification is enabled. When `false` or nonexistent requests do not use SSL verification. 
+- SHIPTHEORY_PHP_SSL_VERIFY_PEER - (Boolean) When set to `true` SSL verification is enabled. When `false` or nonexistent requests do not use SSL verification.
+- SHIPTHEORY_PHP_LOG_PATH - (String) When a string is set it is used as the path to the folder where log files are generated.
 
 ## Usage
 The workflow is similar for all endpoints, queries and bookings. Examples exist in the file `Examples`. If you want to see all endpoint methods, then look in `src/Http/ShiptheoryClient.php`.
