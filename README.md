@@ -1,5 +1,5 @@
 
-# Shiptheory API library for PHP.
+# Shiptheory API library for PHP
 
 A Python version exists: [Shiptheory API library for Python](https://github.com/DanRVP/shiptheory-python)
 
