@@ -18,7 +18,7 @@ use Shiptheory\Objects\ShipmentDetail;
 use Shiptheory\Objects\ShipmentProduct;
 use Shiptheory\Objects\TaxNumber;
 
-$client = new ShiptheoryClient('test@test.com', 'Password123!');
+$client = new ShiptheoryClient('test@test.com', 'Password123!', 'my_partner_tag');
 
 // Set Shipment Details
 $shipment_detail = (new ShipmentDetail())

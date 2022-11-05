@@ -19,10 +19,16 @@ class Api
      */
     protected $logger;
 
-    public function __construct($api_token = null)
+    /**
+     * @var string
+     */
+    protected $partner_tag;
+
+    public function __construct($api_token = null, $partner_tag = null)
     {
-        $this->api_token = $api_token;
-        $this->logger = new Logger(Environment::loadEnvVariable('SHIPTHEORY_PHP_LOG_PATH'));
+        $this->setApiToken($api_token)
+            ->setPartnerTag($partner_tag)
+            ->setLogger(new Logger(Environment::loadEnvVariable('SHIPTHEORY_PHP_LOG_PATH')));
     }
 
     /**
@@ -68,6 +74,16 @@ class Api
      */
     private function makeCurl($endpoint)
     {
+        $headers = [
+            'Accept: application/json',
+            'Content-Type: application/json',
+            'Authorization:  Bearer ' . $this->api_token,
+        ];
+
+        if (!empty($tag = $this->getPartnerTag())) {
+            $headers['Shiptheory-Partner-Tag'] = $tag;
+        }
+
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => self::BASE_URL . $endpoint,
@@ -78,11 +94,7 @@ class Api
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
             CURLOPT_SSL_VERIFYPEER => Environment::loadEnvVariable('SHIPTHEORY_PHP_SSL_VERIFY_PEER'),
-            CURLOPT_HTTPHEADER => [
-                'Accept: application/json',
-                'Content-Type: application/json',
-                'Authorization:  Bearer ' . $this->api_token,
-            ],
+            CURLOPT_HTTPHEADER => $headers,
         ]);
 
         return $curl;
@@ -153,4 +165,46 @@ class Api
 
         return $this;
     }
+
+    /**
+     * Get the value of logger
+     * @return Logger
+     */
+    public function getLogger()
+    {
+        return $this->logger;
+    }
+
+	/**
+	 * Set the value of logger
+	 *
+	 * @param Logger $logger
+	 */
+	public function setLogger($logger)
+	{
+		$this->logger = $logger;
+
+        return $this;
+	}
+
+    /**
+     * Get the value of partner_tag
+     * @return string
+     */
+    public function getPartnerTag()
+    {
+        return $this->partner_tag;
+    }
+
+	/**
+	 * Set the value of partner_tag
+	 *
+	 * @param string $partner_tag
+	 */
+	public function setPartnerTag($partner_tag)
+	{
+		$this->partner_tag = $partner_tag;
+
+        return $this;
+	}
 }

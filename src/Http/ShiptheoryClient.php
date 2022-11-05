@@ -22,11 +22,17 @@ class ShiptheoryClient
      */
     protected $password;
 
-    public function __construct($username, $password)
+    /**
+     * @var string
+     */
+    protected $partner_tag;
+
+    public function __construct($username, $password, $partner_tag = null)
     {
         Environment::loadFromEnvFile();
-        $this->username = $username;
-        $this->password = $password;
+        $this->setUsername($username)
+            ->setPassword($password)
+            ->setPartnerTag($partner_tag);
     }
 
     /**
@@ -232,4 +238,67 @@ class ShiptheoryClient
     {
         return $this->makeShiptheoryApiRequest('get', 'products' . $query_params);
     }
+
+    /**
+     * Get the value of username
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+	/**
+	 * Set the value of username
+	 *
+	 * @param string $username
+	 */
+	public function setUsername($username)
+	{
+		$this->username = $username;
+
+        return $this;
+	}
+
+    /**
+     * Get the value of password
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+	/**
+	 * Set the value of password
+	 *
+	 * @param string $password
+	 */
+	public function setPassword($password)
+	{
+		$this->password = $password;
+
+        return $this;
+	}
+
+    /**
+     * Get the value of partner_tag
+     * @return string
+     */
+    public function getPartnerTag()
+    {
+        return $this->partner_tag;
+    }
+
+	/**
+	 * Set the value of partner_tag
+	 *
+	 * @param string $partner_tag
+	 */
+	public function setPartnerTag($partner_tag)
+	{
+		$this->partner_tag = $partner_tag;
+
+        return $this;
+	}
 }
