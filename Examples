@@ -43,11 +43,11 @@ $reciever = (new Recipient())
     ->setPostcode('BS4 3EH')
     ->setEmail('recipient@test.com')
     ->setTelephone('01234567890')
-    ->setWhat3Words('///what.three.words');
-
-$eori = new TaxNumber('GB205672212000', AddressTaxNumberTypes::EORI);
-$vat = new TaxNumber('GB123456789', AddressTaxNumberTypes::VAT);
-$reciever->setTaxNumbers([$eori, $vat]);
+    ->setWhat3Words('///what.three.words')
+    ->setTaxNumbers([
+        new TaxNumber('GB205672212000', AddressTaxNumberTypes::EORI),
+        new TaxNumber('GB123456789', AddressTaxNumberTypes::VAT),
+    ]);
 
 // Set sender
 $sender = (new Sender())
