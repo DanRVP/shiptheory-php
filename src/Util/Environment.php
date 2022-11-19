@@ -12,7 +12,7 @@ class Environment
      */
     public static function loadFromEnvFile()
     {
-        $env_contents = file_get_contents('.env');
+        $env_contents = @file_get_contents('.env');
         if (!$env_contents) {
             return;
         }
